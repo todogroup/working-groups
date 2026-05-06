@@ -38,7 +38,7 @@ Within TODO, **working groups (WGs)** are the spaces where the community collabo
 | [📖 OSPO Book WG](#-ospo-book-wg) | A collaborative reference book for organizations building or running OSPOs. | See [TODO Calendar](https://todogroup.org/community/meetings/) | `#project-ospobook` | [`ospology/ospo-book`](https://github.com/todogroup/ospology/tree/main/ospo-book) |
 | [🧩 OSS in Business WG](#-oss-in-business-wg) | Articulating the business value of open source for executives and decision-makers. | See [TODO Calendar](https://todogroup.org/community/meetings/)  | `#wg-oss-in-business` | [`ospology/whitepapers/business-value`](https://github.com/todogroup/ospology/tree/main/whitepapers/business-value) |
 | [📊 CHAOSS OSPO Metrics WG](#-chaoss-ospo-metrics-wg) | Defining metrics that demonstrate the value of open source projects and OSPO programs. Joint effort with [CHAOSS](https://chaoss.community/). | See [TODO Calendar](https://todogroup.org/community/meetings/)  | `#wg-ospometrics-chaoss` | [`chaoss/wg-ospo`](https://github.com/chaoss/wg-ospo) |
-| [🤖 Agentic AI to Empower OSPOs WG](#-agentic-ai-to-empower-ospos-wg) | Exploring how agentic AI workflows can scale OSPO operations (compliance, intake, project health, advocacy). | <!-- TBD --> | `#wg-agentic-ai`| <!-- TBD --> |
+| [🤖 Agentic AI to Empower OSPOs WG](#-agentic-ai-to-empower-ospos-wg) | Exploring how agentic AI workflows can scale OSPO operations (compliance, intake, project health, advocacy). |  See [TODO Calendar](https://todogroup.org/community/meetings/) | `#wg-agentic-ai`| [ospology/whitepapers/agentic-ai-to-empower-ospo](https://github.com/todogroup/ospology/tree/main/whitepapers/) |
 
 
 ## 🔍 Working group details
