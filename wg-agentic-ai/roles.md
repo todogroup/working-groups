@@ -2,7 +2,7 @@
 
 Each working group has two leadership roles. Their definitions come straight from [Section 4 of the TODO Charter](https://github.com/todogroup/governance/blob/main/CHARTER.adoc):
 
-- **Chair or Co-Chairs** The operational lead(s) of the working group. Chairs set the agenda, run the calls, coordinate contributors, and own the deliverables.
+- **Chair or Co-Chairs** The operational lead(s) of the working group. Chairs set the agenda, run the calls, coordinate contributors, and manage the deliverables.
 - **Steering Committee Liaison.** A *current Steering Committee member* to support a WG's effectiveness, transparency, and continuity. Per the charter, the Liaison:
   - serves as a coordination point between the SC and the WG;
   - helps the WG chairs and participants understand how TODO works
