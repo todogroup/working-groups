@@ -89,13 +89,13 @@ Participants compared agentic and deterministic workflows, noting that determini
 The group agreed that the working group should focus on higher-level recommendations, shared patterns, and practical resources rather than detailed technical architectures. The draft charter will be refined based on feedback from the discussion and survey responses. 
 
 
-### ## Next Steps
+## Next Steps
 
 - [ ] All working group members: Provide input and feedback on the draft charter in the group’s GitHub repository, either by opening a pull request or by opening an issue with thoughts or questions
 
 - [ ] All working group members: Share tools, specs, or artifacts they are building or experimenting with by contributing to the relevant section in the awesome OSPO issue [Add AI workflows, prompts, and tools for OSPOs](https://github.com/todogroup/awesome-ospo/issues/75)
 
-- [ ] Working group coordinator: Summarize the meeting transcript, ensuring all names and affiliations are removed, and post the anonymized summary in the GitHub repository under meeting notes.
+- [x] Working group coordinator: Summarize the meeting transcript, ensuring all names and affiliations are removed, and post the anonymized summary in the GitHub repository under meeting notes
 
 - [ ] Working group chairs: Review and synthesize feedback and new entries in the open issues and charter to help define group outcomes and collaboration points with other relevant working groups
 
@@ -103,4 +103,4 @@ The group agreed that the working group should focus on higher-level recommendat
 
 - [ ] All working group members: Continue relevant discussions and share updates in the dedicated Slack channel
 
-- [ ] Working group coordinator: Set up a bi-weekly recurring meeting series for the working group.
+- [ ] Working group coordinator: Set up a bi-weekly recurring meeting series for the working group
