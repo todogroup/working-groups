@@ -17,7 +17,7 @@ When adding notes for a new meeting:
 
 This was the kickoff meeting for a new TODO working group focused on AI adoption in Open Source Program Offices (OSPOs). The working group chairs introduced the group’s purpose as a natural evolution of previous discussions about OSPOs’ roles in AI conversations and technology adoption
 
-Participants shared current AI implementation experiences across different organizations, covering use cases such as license compliance automation, documentation refinement, commit message quality checks, evaluation of open source requests, and developer skill development
+Participants shared current AI implementation experiences across different organizations, covering use cases such as license compliance automation, documentation refinement, commit message quality checks, evaluation of open source requests, developer-facing programmatic skills, and AI-enabled contribution workflows.
 
 Key challenges discussed included:
 
@@ -44,17 +44,21 @@ Participants highlighted the value of creating a shared resource and knowledge-s
 
 A survey was introduced to assess members’ current engagement levels with AI initiatives, ranging from observation and exploration to prototyping, testing, and production use. This input may help frame future meetings and identify potential subgroups based on activity levels.
 
-Open Source AI Workflows Discussion
+### Open Source AI Workflows Discussion
 
-Participants shared examples of deterministic AI workflows for open source compliance, with a focus on cost, security, and reproducibility.
+Participants shared examples of deterministic AI workflows for open source compliance, with a focus on cost, security, and reproducibility. 
+
+- One example focused on building programmatic “skills” for developers to use, such as deterministic license-checking skills that could help developers identify and fix issues before submitting work to the OSPO for review.
 
 Others noted active experimentation with agentic AI workflows and expressed interest in learning how different organizations are approaching implementation.
 
-Examples included automating license compliance work, improving commit message quality at scale, and exploring where AI can support recurring OSPO review processes.
+- Examples included automating license compliance work, improving commit message quality at scale, and exploring where AI can support recurring OSPO review processes.
 
 ### AI and Open Source Automation
 
 Several participants shared practical AI use cases already being tested or implemented. These included refining documentation with bots, comparing AI-generated responses against human answers to identify documentation gaps, and automating parts of open source request evaluation.
+
+- Specific examples included an AI agent running inside a Microsoft Teams channel to answer first-line documentation questions, and agents being used to address Release Hub management bottlenecks such as GitHub permissions, team creation, and assignments.
 
 Other examples included tools that help automate the open source publishing process, including code review, intellectual property review, and security checks. Participants also discussed systems that provide AI tools with project-specific context, such as governance rules, conventions, and contribution expectations.
 
@@ -70,6 +74,8 @@ Three broad areas for AI implementation emerged from the discussion:
 
 Participants also shared examples of developer-facing automation, such as checks that reduce review iterations and suggest pull requests when issues are found.
 
+- The PyTorch community was mentioned as a specific environment where AI-enabled contribution policies are being explored
+
 ### AI Collaboration and Tool Development
 
 The group emphasized the importance of focusing on common problems before jumping to specific solutions. Participants noted that sustained collaboration will be important to avoid repeating the challenges of previous tooling efforts.
@@ -77,6 +83,8 @@ The group emphasized the importance of focusing on common problems before jumpin
 A potential distinction emerged between AI usage for internal OSPO operations and AI usage for compliance or open source management workflows. Participants expressed interest in sharing reusable tools, patterns, and practices across organizations.
 
 The group also discussed the value of community collaboration and validation when developing AI tools, especially in areas such as documentation, git commit messages, compliance checks, and contribution workflows
+
+- External tooling communities were also mentioned, including the OSS-Based Compliance Tooling community: https://oss-compliance-tooling.org/
 
 ### Open Source AI Workflow Improvements
 
@@ -91,16 +99,16 @@ The group agreed that the working group should focus on higher-level recommendat
 
 ## Next Steps
 
-- [ ] All working group members: Provide input and feedback on the draft charter in the group’s GitHub repository, either by opening a pull request or by opening an issue with thoughts or questions
+- [x] All working group members: Provide input and feedback on the draft charter in the group’s GitHub repository, either by opening a pull request or by opening an issue with thoughts or questions
 
 - [ ] All working group members: Share tools, specs, or artifacts they are building or experimenting with by contributing to the relevant section in the awesome OSPO issue [Add AI workflows, prompts, and tools for OSPOs](https://github.com/todogroup/awesome-ospo/issues/75)
 
 - [x] Working group coordinator: Summarize the meeting transcript, ensuring all names and affiliations are removed, and post the anonymized summary in the GitHub repository under meeting notes
 
-- [ ] Working group chairs: Review and synthesize feedback and new entries in the open issues and charter to help define group outcomes and collaboration points with other relevant working groups
+- [x] Working group chairs: Review and synthesize feedback and new entries in the open issues and charter to help define group outcomes and collaboration points with other relevant working groups
 
-- [ ] Working group chairs: Prepare an outline for the next meeting
+- [x] Working group chairs: Prepare an outline for the next meeting
 
-- [ ] All working group members: Continue relevant discussions and share updates in the dedicated Slack channel
+- [x] All working group members: Continue relevant discussions and share updates in the dedicated Slack channel
 
-- [ ] Working group coordinator: Set up a bi-weekly recurring meeting series for the working group
+- [x] Working group coordinator: Set up a bi-weekly recurring meeting series for the working group
