@@ -26,7 +26,6 @@ learned into resources the broader community can reuse.
 
 The WG commits to three concrete outcomes:
 
-1. **A shared space to collect material for agentic AI in open source management** A space where paractioners can share guides, links, templates, skills, etc. which are used in real-world open source management scenarios
 2. **A paper on the role of OSPOs and AI** Articulates where the OSPO may sit in an organization's AI strategy and what new responsibilities are emerging
 3. **A paper or blog post on how to use AI tools in an OSPO.** A playbook with concrete patterns, example agentic workflows, prompts, or lessons learned from OSPO practitioners running AI in production or in pilots
 
