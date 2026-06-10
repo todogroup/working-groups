@@ -156,7 +156,6 @@ Participants showed particular interest in practical examples, prepared demos, a
     - Use cases and maturity mapping
     - Skills, prompts, and workflow library
     - Adoption and evaluation
-- [ ] Working group chairs: Review whether “validation of data and outputs” should be part of Workstream 3 or become a distinct subtopic
 - [ ] Working group chairs: Work on a format to include a structured show-and-tell section to future meetings, with prepared demos or short presentations from participants
 - [ ] Working group chairs: Identify participants who shared concrete use cases during the first two meetings and invite them to present a deeper walkthrough in a future session
 - [ ] All working group members: Volunteer to present a short walkthrough or show-and-tell during an upcoming working group call
