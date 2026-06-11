@@ -22,9 +22,9 @@ Each working group has two leadership roles. Their definitions come straight fro
 | Chairs and Co-Chairs | Steering Committee Liaison |
 |---|---|
 | Diego Mastroianni (Cloudera)| Annania Melaku (f5) |
-| Ana Jiménez (Linux Foundation)| |
+| Ana Jiménez (Linux Foundation)- @anajsana| |
 | Ashley Wolf (GitHub)| |
-| Stephen Augustus (Bloomberg)| |
-| Christian Hoeppler| |
+| Stephen Augustus (Bloomberg) - @justaugustus| |
+| Christian Hoeppler (Bosch) - @choeppler| |
 
 > 🙋 **Want to co-chair this WG?** Reach out in the WG's Slack channel or on a call!
