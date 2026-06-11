@@ -4,7 +4,7 @@ This repo serves as a touchpoint for a new repo under github.com/todogroup that 
 The repo itself is intended as a *navigation hub*: missions, meetings, and communication channels live here.
 
 This repository **does not host the deliverables themselves**. It exists so that newcomers and existing community members can quickly find their way to
-the right working group and the repo where the work is actually happeningn(`ospology`, `chaoss/wg-ospo`, `awesome-ospo`, and others).
+the right working group and the repo where the work is actually happening (`ospology`, `chaoss/wg-ospo`, `awesome-ospo`, and others).
 
 ## 📚 Table of contents
 
