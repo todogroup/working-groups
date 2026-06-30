@@ -26,7 +26,7 @@ Participants shared additional examples of Agentic AI to automate work already b
 - Open source readiness and security checks, including secret-leak detection and checklist-based review processes
 - Developer-facing guidance to help contributors understand how to contribute safely without exposing sensitive information
 
-Another topic raise was whether the working group should address open source AI versus closed AI solutions:
+Another topic raised was whether the working group should address open source AI versus closed AI solutions:
 
 - Participants noted that this is strategically relevant for OSPOs, but also complex because “open source AI” remains difficult to define consistently
 - The group discussed that its primary role may not be to recommend specific models, but rather to help OSPOs understand evaluation criteria, governance implications, and practical adoption patterns
@@ -54,7 +54,7 @@ Participants discussed several practical areas where agentic AI may support OSPO
 
 - **The importance of helping organizations identify the actual OSPO problem first, before deciding whether Agentic AI is the right solution**: Participants suggested that the working group could collect common OSPO pain points and then map which ones may be appropriate for deterministic automation, agentic workflows, or human-led processes.
 
-- **How OSPOs can become better “upstream sources” for AI systems by making policies, contribution guidance, governance rules, metadata, and project context easier for agents to consume**: This was identified as a possible area for the second workstream (Skills, prompts, and workflow library), especially where reusable documentation, prompts, workflows, and metadata patterns could help organizations prepare their open source knowledge bases for AI-assisted use
+- **How OSPOs can become better “upstream sources” for AI systems by making policies, contribution guidance, governance rules, metadata, and project context easier for agents to consume**: This was identified as a possible area for the second workstream (Skills, prompts, and workflow library), especially where reusable documentation, prompts, workflows, and metadata patterns could help organizations prepare their open source knowledge bases for AI-assisted use.
 
 ### Open Source AI, Local Models, and Control Boundaries
 
