@@ -22,6 +22,8 @@ Participants discussed OpenFab as an AI-native CI and provenance gate rather tha
 
 ### OpenFab Demo: Trustworthy Software in the Age of AI Authorship
 
+**Slides:** [OpenFab — Trustworthy Software in the Age of AI Authorship](https://github.com/Open-fab-ai/community/blob/main/presentations/2026-06-30-todo-group-agentic-ai/OpenFab_TODO_WG_June30.pdf)
+
 The demo introduced OpenFab as a way to produce signed provenance for AI-assisted software workflows. Rather than focusing on the coding assistant itself, OpenFab focuses on the surrounding trust layer: who or what generated the artifact, what contract or workflow was used, what was approved, and who signed the resulting evidence.
 
 A key distinction discussed was:
