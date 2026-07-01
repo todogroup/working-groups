@@ -8,9 +8,126 @@ When adding notes for a new meeting:
    - [YYYY-MM-DD](#summary-month-day)
 
 # Table of Contents:
-
+- [2026-06-30](#summary-june-30)
 - [2026-06-09](#summary-june-9)
 - [2026-05-26](#summary-may-26)
+
+## Summary June 30
+
+This was the third meeting of the TODO Group Agentic AI to Empower OSPOs working group. The meeting included a show-and-tell session on OpenFab and focused on trustworthy software in the age of AI-assisted authorship, with particular attention to provenance, attestations, reproducibility, and how OSPOs can help organizations govern AI-generated contributions instead of banning them
+
+The session framed a growing challenge for software organizations: as a higher percentage of code is written or modified with AI assistance, organizations need stronger ways to understand who or what produced software artifacts, what process was followed, what approvals were applied, and whether the resulting artifact can be verified later
+
+Participants discussed OpenFab as an AI-native CI and provenance gate rather than a replacement for existing coding tools. The core idea presented was: natural language and AI-assisted generation can remain part of the developer workflow, while signed provenance, attestations, AI-BOM metadata, and reproducibility checks travel with the software artifact
+
+### OpenFab Demo: Trustworthy Software in the Age of AI Authorship
+
+The demo introduced OpenFab as a way to produce signed provenance for AI-assisted software workflows. Rather than focusing on the coding assistant itself, OpenFab focuses on the surrounding trust layer: who or what generated the artifact, what contract or workflow was used, what was approved, and who signed the resulting evidence.
+
+A key distinction discussed was:
+
+| SBOMs | OpenFab AIBOM |
+| --- | --- |
+| describe what is in the software | describe who or what produced it, under which process, and with which attestations| 
+
+The demo showed how AI-related provenance can be committed alongside the code in Git, including attestation files and AI-BOM metadata. This allows the evidence to remain attached to the artifact and repository history, instead of depending only on a specific platform, tool, or external service.
+
+Participants discussed why this matters for OSPOs and enterprise open source governance. As AI-generated code becomes more common, organizations may need to prove that inbound and internal AI-assisted contributions went through a governed process. The discussion connected this to customer expectations, compliance pressure, software supply chain trust, and regulatory requirements such as the EU Cyber Resilience Act
+
+### Artifact-Centric Provenance and offline Verification
+
+A central message from the demo was that trust should travel with the artifact, not only with the platform where the artifact was created or hosted:
+
+- The demo highlighted that the same signed artifact could be pushed to multiple forges, such as GitHub and Gitea, then cloned and verified locally without depending on a forge API or platform-specific runtime state
+
+The verification example showed that when the artifact remained unchanged:
+
+- signatures were valid
+- the source was bit-identical
+- checks re-passed
+- the artifact was reproducible
+- and verification worked offline across different forges
+
+The demo also showed the tamper-evidence case: when one byte changed, verification failed and the artifact was no longer considered reproducible. This illustrated how integrity, authenticity, AI provenance, and contract information can remain re-checkable after the artifact leaves the original environment
+
+### AI-BOM, Attestations, and Git-Based Evidence
+
+Participants discussed the role of the AI-BOM as one of OpenFab’s key contributions. The AI-BOM and attestation files can be committed into Git alongside the code, making AI-related provenance part of the repository’s evidence trail
+
+The group discussed how this approach could help organizations answer questions such as:
+
+- Was this code generated or modified with AI assistance?
+- Which workflow, model, agent, or tool was involved?
+- Who approved the generated output?
+- What tests, gates, or checks were run?
+- Can the artifact be reproduced and verified later?
+- Can the evidence be inspected independently of a single forge or vendor platform?
+
+This was positioned as especially relevant for organizations that need to govern inbound AI-generated contributions, support auditability, and provide evidence to customers, product teams, security teams, legal teams, or compliance stakeholders
+
+### OSPO Role in Governing AI Contributions
+
+The discussion explored why OSPOs may benefit from tools and patterns like OpenFab
+
+- Participants noted that OSPOs may not always directly own the implementation of developer tooling or security gates. However, OSPOs are often well-positioned to identify governance gaps, recommend practices, and connect the right internal teams
+
+Several possible OSPO roles were discussed:
+
+- helping organizations govern AI-generated contributions instead of banning them outright
+- identifying where AI provenance is needed in open source intake or contribution workflows
+- recommending tools and practices to developer experience, product security, platform, legal, and compliance teams
+- supporting internal policy development around AI-assisted open source contributions
+- helping product teams prepare for customer or regulatory questions about AI-generated software
+-  connecting open source governance work with software supply chain security practices
+
+Participants also discussed how developer experience teams, product security teams, incident response teams, platform teams, and teams maintaining internal AI gateways may be key audiences or collaborators for this type of workflow
+
+### Open Questions and Discussion
+
+Participants asked how OpenFab would work when developers use their existing tools, such as Copilot, VS Code, or other AI coding assistants
+
+- The answer discussed was that OpenFab is not intended to replace those tools. Developers could continue using their existing coding environments, while OpenFab provides a CLI and workflow layer for generating provenance, attestations, and AI-BOM evidence. The provenance workflow could also be integrated into automated triggers or CI pipelines
+
+Participants also asked what happens if someone else generated or modified part of the AI-assisted code
+
+- The discussion pointed back to the need for signed attestations and provenance records that can capture the relevant actors, workflow steps, approvals, and evidence attached to the artifact
+
+Another question focused on ownership: who inside an enterprise should own or operate a tool like this?
+
+- The group discussed that ownership may vary by organization. OSPOs may help identify the need and provide recommendations, while implementation could involve internal IT tools teams, developer experience teams, product security, platform engineering, compliance, or AI gateway teams. In larger enterprises, OSPOs may play a coordination role by connecting these teams and translating open source governance needs into practical tooling requirements.
+
+
+Participants asked how the approval gate would work, especially for N-of-M approval flows and reviewer roles. The question raised whether OpenFab could use an existing company identity system, such as SSO, Active Directory, GitHub Enterprise groups, OIDC, or SAML, to decide who is allowed to approve, or whether OpenFab would require a separate list of users and roles
+
+- The discussion emphasized that enterprise adoption would benefit from integration with existing identity and role systems rather than maintaining a separate approval database. This would allow organizations to map existing review-board roles or approval groups into the provenance and gate workflow.
+
+### Trial / Pilot Project Opportunity: AI Provenance for OSPOs
+
+One proposed next step by the presenter was to co-develop an OpenFab trial or pilot project with organizations interested in testing how provenance could be applied to inbound AI-assisted contributions, internal software workflows, or enterprise open source governance processes.
+Participants were encouraged to take the topic back to their own organizations and consider where AI provenance could address specific challenges, such as:
+
+- governing AI-assisted open source contributions
+- documenting provenance for customer-facing software
+- supporting CRA-related readiness
+- improving auditability of AI-generated code
+- creating reusable OSPO guidance for AI contribution governance
+- connecting OSPO workflows with OpenSSF and software supply chain security practices
+
+The group discussion noted that this topic may be relevant to adjacent communities such as OpenSSF, especially where provenance, attestations, maintainership, vulnerability response, and software supply chain trust intersect
+
+### Final Remarks
+
+- OpenFab was presented as one example of how organizations might move from “AI was used somewhere” to a more structured and verifiable model where AI-assisted software artifacts include signed provenance, approval evidence, and reproducibility checks
+- The group identified AI provenance as a relevant topic for future working group exploration, especially where OSPOs need to help organizations govern AI-generated contributions, support internal adoption, and prepare for external compliance or customer trust expectations
+
+### Action Items
+
+- [ ] Working group coordinator: Add the anonymized June 30 meeting summary to the working group repository
+- [ ] Working group coordinator: Capture OpenFab as a possible show-and-tell example under the working group’s practical use cases output
+- [ ] Working group chairs: Consider creating a dedicated discussion issue or workstream topic on AI provenance for OSPOs
+- [ ] Working group chairs and interested participants: Explore whether an OpenFab trial or pilot could be co-developed with organizations interested in provenance for inbound AI-assisted contributions
+- [ ] All working group members: Take the OpenFab provenance topic back to their organizations and identify where AI-generated contribution governance is currently a challenge
+- [ ] All working group members: Share feedback on whether AI-BOMs, attestations, reproducibility checks, and approval gates should be part of the working group’s adoption and evaluation guidance
 
 ## Summary June 9
 
