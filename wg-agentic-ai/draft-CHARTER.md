@@ -30,14 +30,14 @@ The group may prioritize one or two workstreams at a time, depending on particip
 
 This workstream proposes to document where OSPOs are applying agentic AI today and how mature those use cases are. Possible areas include:
 
-* Compliance and license review.
-* Open source request evaluation.
-* Contribution readiness and publishing workflows.
-* Security, malware analysis, and secret detection.
-* Documentation and internal OSPO Q&A.
-* Developer enablement and education.
-* Repository, release, and community operations.
-* Open source metrics and reporting.
+* Compliance and license review
+* Open source request evaluation
+* Contribution readiness and publishing workflows
+* Security, malware analysis, and secret detection
+* Documentation and internal OSPO Q&A
+* Developer enablement and education
+* Repository, release, and community operations
+* Open source metrics and reporting
 
 This workstream may organize examples by maturity level, such as exploration, prototype, pilot, internal production, or organization-wide adoption.
 
