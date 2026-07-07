@@ -53,7 +53,7 @@ This workstream proposes to collect reusable examples that OSPOs can share, adap
 - Policy-to-agent guidance
 - Examples of how to structure OSPO documentation, policies, and contribution rules so AI-enabled systems can consume them safely
 
-Participants are encouraged to share examples through the Awesome OSPO repository by opening an [issue](https://github.com/todogroup/awesome-ospo/issues/75) and/or volunteer to present short walkthroughs during upcoming working group calls
+Participants are encouraged to share examples through the Awesome OSPO repository by commenting on the [issue](https://github.com/todogroup/awesome-ospo/issues/75) and/or volunteer to present short walkthroughs during upcoming working group calls.
 
 ### 3. Adoption and evaluation
 
