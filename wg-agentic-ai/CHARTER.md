@@ -1,5 +1,7 @@
 # Agentic AI to Empower OSPOs Working Group Charter
 
+> Last version: July 7, 2026
+
 ## 🎯 Purpose
 
 Explore, document, and share practical patterns for using **agentic AI** to scale Open Source and AI Management and Operations. The WG is a space for OSPO practitioners to compare notes, prototype together, and turn lessons
