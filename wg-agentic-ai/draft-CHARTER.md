@@ -80,6 +80,6 @@ Meetings may include structured show-and-tell sessions where participants can sh
 The WG commits to three concrete outcomes:
 
 2. **A paper on the role of OSPOs and AI** Articulates where the OSPO may sit in an organization's AI strategy and what new responsibilities are emerging
-3. **A paper or blog post on how to use AI tools in an OSPO.** A playbook with concrete patterns, example agentic workflows, prompts, or lessons learned from OSPO practitioners running AI in production or in pilots
+3. **A paper or blog post on how to use Agentic AI tools in an OSPO.** A playbook with concrete patterns, example agentic workflows, prompts, or lessons learned from OSPO practitioners running Agentic AI in production or in pilots
 
 All deliverables will be published under CC-BY 4.0 via the [`todogroup/ospology`](https://github.com/todogroup/ospology) repo and the [TODO Group blog](https://todogroup.org/blog/).
