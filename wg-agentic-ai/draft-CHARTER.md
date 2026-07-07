@@ -22,7 +22,7 @@ learned into resources the broader community can reuse.
 
 ## 🧩 Workstreams
 
-The working group organizes its activities around three initial workstreams. These workstreams may evolve based on participant feedback, community needs, and the level of active contribution in each area
+The working group organizes its activities around three initial workstreams. These workstreams may evolve based on participant feedback, community needs, and the level of active contribution in each area.
 
 The group may prioritize one or two workstreams at a time, depending on participant interest and available contributors. For example, the group may initially focus on the workstream where there is the strongest current demand, and then move into other workstreams as examples, contributors, and shared needs emerge.
 
