@@ -8,10 +8,368 @@ When adding notes for a new meeting:
    - [YYYY-MM-DD](#summary-month-day)
 
 # Table of Contents:
+- [2026-07-21](#summary-july-21)
 - [2026-07-07](#summary-july-7)
 - [2026-06-30](#summary-june-30)
 - [2026-06-09](#summary-june-9)
 - [2026-05-26](#summary-may-26)
+## Summary July 21
+
+This was the fifth meeting of the TODO Group Agentic AI to Empower OSPOs working group. The meeting included a show-and-tell on an agentic Software Composition Analysis (SCA) and compliance workflow built around GitHub Actions, and focused on a practical problem for OSPOs: how to turn the growing volume of open source dependency, licensing, security, project health, and AI-related signals into actionable decisions without requiring humans to manually review every signal
+
+The session framed the problem as one of scale. A relatively small software project can quickly grow from a handful of direct dependencies to more than one hundred transitive dependencies. At the same time, organizations receive information from dependency graphs, advisories, license analysis, project-health tools, AI artifact scanners, and other sources. Existing tools can surface many useful signals, but humans still need to interpret them and decide what action to take
+
+The show-and-tell explored using agents as a layer between those signals and the human reviewer:
+
+- collect information from several existing open source tools and datasets
+- summarize and prioritize the relevant findings
+- evaluate findings against project-specific policies or criteria
+- produce evidence or a compliance artifact
+- propose remediation where appropriate
+- keep a human responsible for reviewing and accepting resulting changes
+
+A major discussion then emerged around what happens after organizations start building many reusable AI skills and agentic workflows. Participants discussed whether skills should live inside individual repositories, in centralized organizational repositories, or in curated internal "skills marketplaces"; who should own them; and how OSPOs, developer experience, security, legal, and other domain teams can share responsibility for maintaining them
+
+**Slides:** [Agentic AI GitHub Actions](https://ovalenzuela.com/agentic-ai-github-actions/slides.html)
+
+## Show-and-Tell: Agentic SCA and Compliance in GitHub Actions
+
+The presenter described the challenge of managing compliance and open source risk across a growing number of repositories.
+
+Traditional SCA, dependency, security, and project-health tools can provide useful signals, but reviewing those signals becomes difficult when an organization needs to maintain tens or hundreds of projects. Even where some findings can be automatically resolved, many still require interpretation, prioritization, and a decision from a human
+
+The session presented an experimental approach where an agentic workflow runs through GitHub Actions and uses existing tools and datasets rather than attempting to replace them
+
+The general workflow was described in three stages:
+
+1. **Collect signals** from different sources
+2. **Summarize and assess those signals** to identify what is relevant to the project
+3. **Prepare or propose remediation**, with appropriate human review before resulting changes are accepted
+
+The objective was to reduce the amount of information a human has to inspect while preserving the evidence needed to understand how a recommendation was produced
+
+## Combining Existing Open Source Signals
+
+The workflow demonstrated how different sources can be combined into a single assessment. Examples mentioned during the session included:
+
+- repository dependency graphs
+- license and SPDX-related data
+- OpenSSF Scorecard
+- repository and project-health signals
+- security or advisory information
+- tools that scan source code for AI artifacts
+- additional project-specific rules and policies
+
+The presenter described using structured licensing and compatibility data as context for the agent so that it can reason about whether a dependency is compatible with a particular project's requirements
+
+AI artifact detection was also discussed. Rather than treating AI usage as a binary signal, the workflow can potentially combine information about where an AI-related artifact appears, its license, its dependencies, and the policies relevant to the target application
+
+The broader pattern discussed was that agents become more useful when they receive curated, structured context from existing authoritative tools and datasets instead of being expected to independently infer everything from source code or natural-language prompts
+
+## From Findings to a Compliance Artifact
+
+The demo showed GitHub Actions running the workflow automatically and producing a resulting artifact that can be consumed by another process or reviewed by a human. One example shown was a dependency remediation agent executed as part of a GitHub Actions workflow.
+
+The pipeline included separate stages around detection, activation, agent execution, safe output handling, and conclusion. The agent could use the findings from earlier analysis to prepare a possible remediation.
+
+Participants discussed the value of this architecture because the existing scanners and data sources remain responsible for producing evidence, while the agent provides an interpretation and decision-support layer on top.
+
+This creates a possible pattern for OSPO workflows:
+
+| Layer | Role |
+
+| --- | --- |
+
+| Existing scanners and datasets | Produce evidence and deterministic signals |
+
+| Agentic analysis | Combine, interpret, prioritize, and contextualize those signals |
+
+| Human review | Decide whether the recommendation or remediation should be accepted |
+
+The discussion reinforced that the agent should not necessarily become a replacement for existing compliance tooling. Instead, it can coordinate and reason across outputs that otherwise require substantial manual work.
+
+## Human-in-the-Loop Remediation
+
+A central discussion focused on what should happen when an agent finds a problem.
+
+Participants asked about the reaction from engineering teams when automated tools produce findings. Experience shared during the session was mixed:
+
+- some developers appreciate receiving findings already summarized and prepared for action
+- others are uncomfortable when automation independently decides what should be changed
+- automatically creating work for developers can create resistance when there is insufficient context
+- the usefulness of automation depends heavily on where the human is inserted into the process
+
+One pattern discussed was to separate **problem discovery** from **remediation authorization**.
+
+Instead of allowing an agent to independently identify, prioritize, and fix every issue, an intermediate triage step could surface the problem to a person. The human could then decide that a specific issue should be addressed, after which an agent could prepare a proposed implementation.
+
+Another workflow described during the discussion was:
+
+- an issue or ticket defines the problem to solve
+- a local or developer-facing agent works from that approved intent
+- the agent prepares a solution
+- the agent opens a pull request
+- the pull request remains pending for human review and approval
+
+This keeps the agent useful for implementation while avoiding a model where every detected signal automatically becomes a code change.
+
+## Verified Intent and Reviewability
+
+The session connected this human-in-the-loop model to the concept of **Verified Intent Development (VID)**, a methodology for AI-assisted software development based on making the intended change explicit and ensuring that generated code remains understandable and verifiable by humans.
+
+The discussion highlighted principles such as:
+
+- articulate intent before generating code
+- scale verification according to the level of risk
+- do not accept code that the responsible human cannot understand at an appropriate level
+- preserve information about where generated code and other artifacts originated
+- continually adjust verification practices as risks and workflows change
+
+This connected closely to the July 7 discussion about AI-assisted contributions. In both cases, the issue is not simply whether an agent can generate a valid change. The important question is whether the human responsible for the project can understand the intent, evaluate the resulting change, and remain accountable for accepting it.
+
+Participants discussed keeping agent-generated pull requests sufficiently small and understandable. If remediation becomes too large or complex for a human to meaningfully review, the workflow has failed to preserve the intended control boundary.
+
+## Data Quality, Curation, and Context Growth
+
+Another major discussion focused on data.
+
+Participants asked what the next major limitation would be after building workflows like the one demonstrated. The answer emphasized that the challenge increasingly becomes not only obtaining more data, but curating the right data for the specific decision.
+
+Agentic workflows can produce and consume very large amounts of information:
+
+- raw scanner findings
+- dependency information
+- licensing evidence
+- policy mappings
+- historical decisions
+- project-health information
+- generated recommendations
+- remediation context
+
+Simply placing all available information into an LLM context does not scale well. It increases token usage, context size, cost, and the risk that irrelevant information obscures the important evidence.
+
+The discussion therefore emphasized **curation** as an important part of agentic architecture.
+
+Rather than creating one agent with access to everything, one possible pattern is to use smaller agents or processing stages that:
+
+- select the relevant data
+- synthesize a specific type of evidence
+- reduce information before passing it to another step
+- specialize around one decision or domain
+
+Participants noted that organizations may eventually accumulate very large datasets not only about software itself, but about previous decisions: whether something was approved, rejected, considered compatible, escalated, or remediated.
+
+This decision data may become valuable context for future agents, but it also creates a new governance problem: determining which historical data remains relevant, authoritative, and appropriate for a particular decision.
+
+## Policy Enforcement and AI Infrastructure
+
+The discussion also touched on organizational controls around AI usage itself, including the ability to enforce policies, constrain model usage, and manage token or infrastructure cost.
+
+An open source project called [AI Proxy Guard](https://aiproxyguard.com/) was shared as an example of infrastructure designed to apply policies around AI usage.
+
+This reinforced a recurring theme in the working group: adopting agentic workflows creates governance needs beyond the individual agent. Organizations may also need infrastructure for:
+
+- model and endpoint access
+- policy enforcement
+- cost controls
+- auditability
+- permitted data flows
+- organizational guardrails
+
+For OSPOs, these infrastructure questions may overlap with existing relationships across developer experience, security, legal, compliance, platform engineering, and AI governance teams.
+
+## Applying the Workflow Before Open Source Release
+
+Participants asked whether the demonstrated workflow could also be used against private repositories before software is released as open source. The discussion identified this as a relevant use case.
+
+- Organizations could potentially maintain internal skills or workflows that evaluate a project before publication, with checks tailored to the type of project being released. The requirements for a library, mobile application, service, model, or other artifact may differ, so the agentic workflow could combine a common baseline with project-specific checks
+
+This connects directly to existing OSPO release-readiness processes. Instead of replacing those processes, reusable agent skills could encode parts of the organization's existing release guidance and make that guidance available earlier to engineering teams. Possible uses include:
+
+- pre-release open source readiness checks
+- licensing and dependency review
+- security checks
+- repository hygiene
+- documentation requirements
+- policy-specific checks
+
+The session also discussed that some internal skills developed for these workflows could eventually become reusable open source resources where the underlying logic is broadly applicable
+
+## From Individual Skills to Shared Skill Libraries
+
+The latter part of the meeting shifted from the specific compliance demo to a broader architectural and organizational question: **Where should reusable agent skills live?**
+
+Participants discussed a model where individual teams or repositories create their own skills, while organizations maintain a central location for the most important or broadly reusable ones. Several possible patterns emerged:
+
+- project-specific skills stored with the repository
+- shared skills kept in a central organizational repository
+- repositories referencing skills maintained elsewhere
+- synchronization scripts that distribute shared skills
+- internal catalogs or marketplaces that help developers discover available skills
+- curated external resources for reusable open source skills
+
+Participants noted that copying the same skill into many repositories creates a maintenance problem. Where possible, organizations may prefer referencing a source of truth or using mechanisms that keep distributed copies synchronized.
+
+For the working group, this also raised the possibility of maintaining pointers to existing resources rather than copying every workflow into the TODO repository.
+
+A shared resource could provide:
+
+- links to existing upstream skills
+- examples of how organizations structure skill repositories
+- reusable OSPO-focused skills
+- references to relevant MCP servers or other agent tooling
+- guidance for building organization-specific workflows
+
+## Skills Marketplace and Ownership
+
+Participants discussed how organizations are beginning to think about internal "skills marketplaces" or catalogs.
+
+The idea is that many engineers and teams may be able to create skills, but an organization still needs a way to determine:
+
+- which skills should be broadly promoted
+- who owns them
+- who reviews updates
+- which versions are authoritative
+- how users discover trusted skills
+- what happens when a skill becomes outdated
+- how domain-specific skills are validated
+
+One model discussed was for a developer experience or similar engineering function to operate the central marketplace while allowing individual teams to continue developing their own skills. However, ownership of the content should remain with the relevant domain experts.
+
+Examples discussed included:
+
+- security-related skills should involve or be owned by security teams and OSPO teams
+- licensing-related skills should involve legal and OSPO experts
+- engineering-specific skills should be maintained by the relevant engineering teams
+
+This was compared to familiar governance patterns rather than treated as a completely new AI problem. Organizations already have domain ownership, code review, repository maintainership, publishing criteria, and approval processes. Similar mechanisms can be applied to reusable agent skills.
+
+## Internal Versus External Skill Distribution
+
+Participants also distinguished between internal and external distribution.
+
+Internally, organizations may allow relatively broad experimentation, with many teams creating skills and sharing them through repositories or internal marketplaces.
+
+Externally, organizations may want a much more curated experience. Skills published for customers, users, or the broader community may require additional review to ensure that they:
+
+- work as expected
+- remain maintained
+- use supported interfaces
+- follow security and legal requirements
+- point to authoritative documentation
+- do not expose outdated organizational practices
+
+One participant suggested that MCP may be particularly useful for exposing capabilities externally, while an internal repository and synchronization model can work well for organization-specific skills.
+
+The discussion did not establish one universal architecture, but highlighted **discoverability, ownership, curation, and lifecycle management** as emerging organizational requirements.
+
+## Implications for OSPOs
+
+The meeting demonstrated that agentic SCA is not only a compliance automation problem.
+
+As organizations start creating agent workflows around licensing, security, project health, publishing, contribution management, and other open source processes, OSPOs may need to think about the surrounding knowledge and governance layer.
+
+Potential OSPO roles discussed or implied by the session include:
+
+- defining which open source decisions can be automated
+- identifying where human approval remains necessary
+- translating open source policies into machine-consumable rules or skills
+- helping curate authoritative sources for agents
+- maintaining or co-maintaining licensing and publishing skills
+- helping engineering teams use existing open source tools as reliable agent inputs
+- participating in internal skill governance and ownership
+- helping define release-readiness workflows for private repositories before publication
+- sharing reusable workflows with the broader OSPO community where possible
+
+A recurring theme was that domain expertise still matters. Agentic AI can make execution faster, but organizations still need people who understand which evidence is authoritative, what the policy means, what constitutes an acceptable decision, and who is accountable for maintaining those rules.
+
+## Mapping to Working Group Workstreams
+
+The session connected strongly to all three proposed working group workstreams
+
+### Workstream 1: Use Cases and Maturity Mapping
+
+The session provided several concrete use cases for agentic AI in OSPO and open source management workflows:
+
+- agentic SCA and dependency analysis
+- license compatibility assessment
+- AI artifact identification
+- project-health assessment
+- dependency remediation
+- compliance evidence generation
+- pre-release open source readiness review
+- policy-aware developer guidance
+- human-approved remediation workflows
+- organizational skill catalogs and marketplaces
+
+A useful maturity distinction also emerged:
+
+1. tools produce signals for humans
+2. agents summarize and contextualize signals
+3. agents recommend a decision
+4. humans authorize the desired action
+5. agents prepare remediation
+6. humans review and accept the resulting change
+
+This could provide a useful model for describing different levels of autonomy in future working group outputs
+
+### Workstream 2: Skills, Prompts, and Workflow Library
+
+This session was particularly relevant to the skills and workflow library.
+
+Potential reusable artifacts discussed include:
+
+- license compliance analysis skills
+- dependency assessment skills
+- open source release-readiness skills
+- project-health analysis prompts
+- security-focused analysis skills
+- maintainer-health or sustainability analysis skills
+- reusable GitHub Actions workflows
+- policy datasets for agent decision support
+- references to existing MCP servers and agent tooling
+- examples of central organizational skill repositories
+- skill contribution and curation policies
+- synchronization patterns for keeping distributed skills current
+
+The discussion suggested that the working group does not necessarily need to duplicate upstream projects. A useful community resource could instead provide a curated index pointing to maintained sources of truth while also identifying gaps where OSPO-specific reusable skills should be created.
+
+### Workstream 3: Adoption and Evaluation
+
+The session surfaced several criteria for evaluating an agentic workflow beyond whether it technically works.
+
+Possible evaluation questions include:
+
+- Does the workflow reduce the number of findings a human must manually interpret?
+- Is the underlying evidence still visible and traceable?
+- Can humans understand why the agent recommended a particular action?
+- Is remediation separated from authorization where appropriate?
+- Are generated changes small enough for meaningful human review?
+- Are agents using curated and authoritative sources?
+- How much irrelevant data is being passed through the workflow?
+- What is the token and infrastructure cost?
+- Who owns the skills and policies used by the agent?
+- How are skills updated when the underlying policy changes?
+- Can internal teams identify which skills are trusted?
+- Is the workflow useful to engineers or does it simply generate additional tickets?
+- Does automation remove work or move more work onto another team?
+
+## Final Remarks
+
+A key takeaway was that organizations already have many useful sources of evidence. The challenge is increasingly how to combine those signals, curate the relevant context, translate organizational policy into reusable guidance, and surface an actionable recommendation without removing human accountability. 
+
+The discussion also expanded the working group's focus from individual agents toward the organizational infrastructure around them. As more teams create AI skills and workflows, OSPOs may need to participate in questions around skill ownership, curation, discoverability, policy maintenance, release readiness, and the distinction between internal experimentation and externally supported workflows. This suggests that one important output for the working group may be not only a collection of prompts or agents, but guidance for how organizations organize and govern reusable skills across domains.
+
+## Action Items
+
+- [x] Working group coordinator: Add the anonymized July 21 meeting summary to the working group repository
+- [ ] Working group coordinator: Capture the agentic SCA / GitHub Actions workflow as a show-and-tell example under the working group's practical use cases
+- [ ] Working group chairs: Consider adding agentic SCA and pre-release open source readiness as explicit examples under the use cases and maturity mapping workstream
+- [ ] Working group chairs: Consider documenting levels of agent autonomy from signal collection through recommendation, human authorization, remediation, and final human review
+- [ ] Working group chairs and interested participants: Explore creating a curated index of reusable OSPO agent skills, workflows, MCP resources, and upstream projects
+- [ ] Working group members: Share examples of how their organizations store, distribute, curate, and maintain reusable agent skills
+- [ ] Working group members: Share examples of contribution or governance policies used for internal skill repositories or skills marketplaces
+- [ ] Working group members: Identify existing internal open source release-readiness checks that could potentially be expressed as reusable agent skills or workflows
 
 ## Summary July 7
 
