@@ -8,11 +8,349 @@ When adding notes for a new meeting:
    - [YYYY-MM-DD](#summary-month-day)
 
 # Table of Contents:
+- [2026-09-01](#summary-september-1)
 - [2026-07-21](#summary-july-21)
 - [2026-07-07](#summary-july-7)
 - [2026-06-30](#summary-june-30)
 - [2026-06-09](#summary-june-9)
 - [2026-05-26](#summary-may-26)
+
+
+
+## Summary September 1
+
+This was the sixth meeting of the TODO Group Agentic AI to Empower OSPOs working group. The meeting included one joint show-and-tell in which two presenters explored agentic open source security and compliance using two complementary tools:
+
+- an experimental MCP server that exposes precomputed OpenSSF Scorecard results
+- a pluggable framework for auditing projects against software-engineering and compliance standards, generating evidence, and supporting remediation
+
+The session explored how deterministic tools, structured project metadata, MCP servers, and AI agents can work together. A recurring theme was that agents should not independently determine whether a project is secure or compliant. Existing tools should produce evidence and structured signals, while agents help people retrieve, interpret, correlate, and act on those signals.
+
+The discussion also surfaced an infrastructure challenge: agentic tools work best when projects and assessment systems expose machine-readable information ahead of time. Participants discussed whether tools such as OpenSSF Scorecard should precompute more information, publish consistent APIs, and generate reusable metadata that both deterministic automation and language models can consume.
+
+### Joint Show-and-Tell: Agentic Open Source Security and Compliance
+
+The show-and-tell began with [Scorecard MCP](https://github.com/uwu-tools/scorecard-mcp), an experimental Model Context Protocol server that exposes OpenSSF Scorecard information as typed, read-only tools and resources.
+
+The server currently reads precomputed results from the public Scorecard REST API. It allows an MCP-compatible agent to:
+
+- retrieve a repository's aggregate Scorecard score and per-check results
+- inspect the detailed result of an individual check
+- compare results across repositories
+- list the checks supported by Scorecard
+- explain a check's methodology, associated risk, and possible remediation
+- preserve provenance such as the assessed commit, scan date, Scorecard version, and data source
+
+The demonstration used the public Scorecard information for a repository through the [Scorecard viewer](https://scorecard.dev/viewer/?uri=github.com/ossf/scorecard-infra) and [Scorecard REST API](https://api.scorecard.dev/projects/github.com/ossf/scorecard-infra).
+
+The group saw how an agent could answer repository-specific questions using existing Scorecard evidence. Examples included asking about:
+
+- branch protection and repository rules
+- whether code review protections are enabled
+- the presence of a security policy
+- individual Scorecard checks and the reasons behind their results
+- areas where a project could improve its security posture
+
+The discussion emphasized that Scorecard findings are heuristic signals rather than definitive judgments. The MCP server follows the same model: it gives an agent structured evidence but does not declare that a repository is categorically "secure" or "insecure."
+
+The current MCP implementation reads results already published through the public Scorecard API. This has several practical benefits:
+
+- responses can be retrieved quickly
+- the MCP server does not need to run every Scorecard check itself
+- results contain information about their origin and assessment date
+- the agent can use an existing authoritative source rather than recreating the analysis
+
+However, cached results have limitations:
+
+- only participating public repositories that publish their results are represented
+- the public scan does not execute every available Scorecard check
+- findings may not reflect the repository's most recent state
+- some checks may be inconclusive because of permissions or unavailable information
+- private repositories require a different execution model
+
+A future direction for the project is to support live Scorecard execution, including assessments of private repositories where appropriate authorization is available.
+
+### MCP Versus Direct API Calls
+
+The demonstration raised a practical question about the value of placing an MCP server between an agent and an existing API. If Scorecard results are already available through a REST API, could an agent call that API directly instead?
+
+The discussion indicated that both approaches can be appropriate. A direct API call may be simpler when the endpoint, request, and response format are already known and the workflow only needs a narrowly defined result. It avoids adding another service or abstraction layer.
+
+An MCP server can add value when the capability needs to be discovered and used consistently by different agent clients. It can present domain-specific operations as named, typed tools; package documentation and explanations as resources; normalize inputs and outputs; and attach important context such as provenance, freshness, completeness, licensing, and known caveats. This reduces the amount of Scorecard-specific API knowledge that must be embedded in each prompt or agent implementation.
+
+The group also noted the tradeoff: an MCP wrapper creates another component that must be developed, secured, versioned, and maintained. Wrapping an API without adding useful semantics, validation, or interoperability may provide little benefit. The decision should therefore depend on whether MCP offers a meaningful reusable interface rather than being treated as the default integration mechanism.
+
+Questions raised for future evaluation included:
+
+- When is a direct API integration sufficient?
+- What domain knowledge or normalization should an MCP server add?
+- Does MCP improve discovery and portability across agent clients?
+- How are API errors, incomplete results, and stale data represented through the MCP layer?
+- Who maintains the MCP interface when the underlying API changes?
+- Does the additional abstraction improve governance and auditability enough to justify its operational cost?
+
+### OpenSSF Scorecard as an Agent Input
+
+Participants discussed several ways that Scorecard information could support OSPO workflows:
+
+- inventorying the security posture of repositories
+- comparing projects across an organization or portfolio
+- identifying repositories that require human attention
+- explaining unfamiliar Scorecard checks
+- prioritizing findings according to organizational requirements
+- providing remediation guidance to project teams
+- supporting project onboarding or release-readiness reviews
+- tracking changes in project posture over time
+
+The group reinforced that the agent is most valuable as an interpretation and coordination layer. Scorecard should remain responsible for producing the underlying assessment, while the agent makes that information easier to query and contextualize. A possible architecture is:
+
+| Layer | Role |
+| --- | --- |
+| OpenSSF Scorecard | Run checks and produce evidence |
+| MCP servers | Expose the evidence in structured, machine-readable form |
+| Agentic analysis | Retrieve, explain, compare, and contextualize findings |
+| Human review | Evaluate the evidence and authorize any response |
+| Remediation tooling | Prepare or apply approved improvements |
+
+### Pluggable Compliance Auditing and Remediation with Darnit
+
+The show-and-tell then introduced [Darnit](https://github.com/darnitdevorg/darnit), a pluggable compliance-audit framework designed to help software projects conform to engineering best practices.
+
+The framework brings several capabilities together:
+
+- running compliance audits
+- supporting multiple standards through plugins
+- combining controls into an organization-specific posture
+- exposing auditing capabilities through MCP
+- identifying gaps and preparing remediation
+- generating cryptographically verifiable attestations
+- using structured project metadata to locate relevant documentation and evidence
+
+The demonstrated approach covered more than vulnerability scanning. Potential assessment areas include:
+
+- repository access controls
+- vulnerability-management practices
+- testing and code-review requirements
+- CI/CD quality controls
+- dependency pinning and build reproducibility
+- release processes and artifact signing
+- governance and maintainer documentation
+- contribution and support guidance
+- project documentation
+
+The project includes an implementation of the OpenSSF Baseline and supports a canonical `.project.yaml` file for project metadata.
+
+### From Assessment to Remediation
+
+The Darnit demo expanded the conversation from retrieving findings to acting on them. Participants discussed a flow in which a tool:
+
+1. discovers project metadata and relevant evidence
+2. selects the applicable compliance controls
+3. runs deterministic assessments
+4. reports which controls pass, fail, or need review
+5. produces an auditable result or attestation
+6. proposes remediation for identified gaps
+7. leaves consequential changes subject to human review
+
+This may help OSPOs translate policies and best-practice frameworks into repeatable workflows without relying on an agent to invent the compliance criteria.
+
+The distinction between evidence, interpretation, and remediation remains important:
+
+- deterministic checks should establish observable facts where possible
+- agents can explain or correlate those facts
+- proposed changes should be traceable to a specific control
+- humans should decide whether the proposed remediation is appropriate
+- the resulting assessment should preserve enough evidence for later review
+
+### Standardized Project Metadata
+
+A major point of discussion concerned the role of structured project metadata.
+
+The session referenced CNCF's `.project` metadata work, including its public [schema](https://github.com/cncf/automation/tree/main/utilities/dot-project/schema), [example project file](https://github.com/cncf/automation/blob/main/utilities/dot-project/example/project.yaml), and [template](https://github.com/cncf/automation/blob/main/utilities/dot-project/template/project.yaml).
+
+Participants noted that OSPOs and other organizations often maintain similar information in different formats, including `code.json`, spreadsheets, internal databases, repository configuration, and manually maintained documentation.
+
+A standardized project-metadata file could give tools and agents a reliable starting point for discovering:
+
+- project identity and ownership
+- repositories and other project resources
+- governance documentation
+- security and vulnerability-reporting information
+- contribution and support documentation
+- project lifecycle or maturity information
+- locations of relevant compliance evidence
+- contacts or responsible teams
+
+The session highlighted the `.project` schema as a potentially valuable discovery for OSPOs already working with other metadata standards.
+
+### Precomputing Machine-Readable Evidence
+
+The discussion raised a broader architectural question: should assessment tools do more work ahead of time to make their results easier for agents and other automation to consume?
+
+Rather than requiring every agent to inspect an entire repository and reconstruct the same facts, deterministic tools could periodically produce:
+
+- structured findings
+- machine-readable project metadata
+- timestamps and provenance
+- normalized control identifiers
+- links to supporting evidence
+- confidence or completeness indicators
+- remediation references
+- signed assessment artifacts
+- APIs for retrieving current and historical results
+
+This could reduce duplicated computation and improve consistency. It would also allow agents to focus on interpretation and decision support instead of repeatedly rediscovering facts that conventional software can determine more reliably.
+
+The group discussed this as a form of "back pressure" from agentic use cases onto existing open source tooling. As agents become more common, established tools may need to improve their APIs, schemas, provenance, and structured output.
+
+### Deterministic Tools and Language Models
+
+A key takeaway was that deterministic tooling and language models have complementary roles.
+
+Deterministic tools are generally better suited to:
+
+- checking whether a file or configuration exists
+- evaluating a repository against a defined control
+- recording exactly which evidence produced a result
+- generating repeatable structured output
+- signing or attesting to an assessment
+
+Language models and agents can add value by:
+
+- translating natural-language questions into tool calls
+- selecting relevant evidence from several sources
+- explaining findings in language appropriate to the audience
+- correlating results across different tools
+- identifying ambiguity or missing context
+- proposing possible next steps
+- helping users navigate large volumes of assessment information
+
+The group cautioned against using an LLM to recreate deterministic checks when an established tool already exists. Connecting agents to maintained upstream tools can improve reliability, explainability, and reuse.
+
+### Trust, Provenance, and Human Judgment
+
+Both tools reinforced that agent-accessible information needs clear provenance.
+
+Useful responses should identify:
+
+- which tool produced the finding
+- which version of the tool was used
+- when the assessment was performed
+- which repository revision was assessed
+- whether the assessment was complete
+- which evidence supports the finding
+- whether the result was cached, live, or inferred
+- what the agent added through interpretation
+
+This separation helps prevent an agent-generated explanation from being mistaken for the original evidence.
+
+Participants also emphasized the continuing importance of human judgment. A failed check may be important, intentionally accepted, inapplicable, or the result of incomplete information. OSPOs and project maintainers remain responsible for interpreting findings in the context of the project and organization.
+
+### Implications for OSPOs
+
+The session suggested several potential roles for OSPOs:
+
+- identify authoritative sources for project-health and compliance information
+- promote structured project metadata across repository portfolios
+- define which standards and controls apply to different project types
+- help translate organizational policy into machine-consumable rules
+- participate in the governance of MCP servers and agent tools
+- ensure that provenance and evidence remain visible
+- define when findings require escalation or remediation
+- maintain human approval boundaries for consequential changes
+- help align internal metadata practices with emerging open source schemas
+- contribute reusable integrations and workflows upstream
+
+OSPOs may also serve as connectors between security, legal, compliance, engineering, project maintainers, and AI-governance teams. Agentic workflows can make existing evidence easier to use, but only if these groups agree on authoritative inputs, acceptable controls, and ownership.
+
+### Mapping to Working Group Workstreams
+
+#### Workstream 1: Use Cases and Maturity Mapping
+
+The session provided several agentic-AI use cases relevant to OSPOs:
+
+- conversational access to OpenSSF Scorecard results
+- repository security-posture explanation
+- portfolio-level comparison and prioritization
+- project onboarding and release-readiness assessment
+- compliance auditing against a defined standard
+- project-metadata discovery
+- evidence collection and normalization
+- remediation planning
+- compliance-attestation generation
+- coordination across multiple assessment tools
+
+A possible maturity progression emerged:
+
+1. deterministic tools produce isolated findings
+2. findings are published through structured formats or APIs
+3. MCP servers make findings accessible to agents
+4. agents explain and correlate evidence
+5. agents recommend prioritized actions
+6. humans authorize remediation
+7. tools or agents prepare changes
+8. humans review and accept the resulting changes
+
+#### Workstream 2: Skills, Prompts, and Workflow Library
+
+Potential reusable resources identified during the session include:
+
+- an OpenSSF Scorecard MCP integration
+- prompts for explaining repository security posture
+- prompts for comparing repository findings
+- workflows for triaging Scorecard results
+- compliance-audit skills
+- project onboarding and release-readiness workflows
+- remediation-planning skills
+- `.project.yaml` templates and validation workflows
+- mappings between OSPO requirements and established controls
+- patterns for preserving provenance in agent responses
+- examples of using several deterministic tools through a shared agent workflow
+
+The working group could provide a curated index pointing to upstream implementations rather than duplicating them.
+
+#### Workstream 3: Adoption and Evaluation
+
+The session surfaced evaluation questions for agent-enabled assessment workflows:
+
+- Does the workflow use authoritative, maintained sources?
+- Are results current enough for the intended decision?
+- Is the assessed repository revision visible?
+- Can the user distinguish cached, live, and inferred information?
+- Are incomplete and inconclusive findings represented accurately?
+- Does the workflow expose the evidence behind a score?
+- Does it reduce the amount of manual investigation required?
+- Does it avoid recreating deterministic checks with an LLM?
+- Are remediation proposals tied to specific controls?
+- Is human authorization required at the appropriate point?
+- Can the assessment and resulting actions be audited?
+- Can the approach scale across a large repository portfolio?
+- Are the metadata and APIs interoperable across tools?
+- Does MCP provide meaningful semantics and portability beyond a direct API call?
+- Is the additional MCP component justified by its maintenance and operational cost?
+
+### Final Remarks
+
+The meeting demonstrated how MCP can make existing open source security and compliance systems easier for humans and agents to use. The strongest pattern was not an autonomous agent making unsupported judgments, but an agent operating on top of deterministic checks, structured metadata, documented methodologies, and traceable evidence.
+
+OpenSSF Scorecard, compliance frameworks, project-metadata schemas, APIs, and attestations can form an evidence layer. MCP servers and agentic workflows can then provide a conversational and coordinating layer that helps OSPOs interpret that evidence at scale.
+
+The discussion also suggested that agent adoption may influence the design of existing tooling. Projects may increasingly need to publish stable schemas, structured results, provenance, completeness information, and APIs so that agents can consume their outputs without repeating the underlying analysis.
+
+### Action Items
+
+- [ ] Working group coordinator: Add the anonymized September 1 meeting summary to the working group repository
+- [ ] Working group chairs: Capture Scorecard MCP and pluggable compliance auditing as show-and-tell examples under the working group's practical use cases
+- [ ] Working group members: Evaluate whether the Scorecard MCP integration should be included in the shared skills, prompts, and workflow index
+- [ ] Working group members: Review the CNCF `.project` schema and compare it with metadata formats currently used by OSPOs
+- [ ] Working group members: Share examples of APIs, schemas, or machine-readable outputs used to expose project-health and compliance evidence
+- [ ] Working group chairs and interested participants: Document the boundary between deterministic assessment, agent interpretation, human authorization, and remediation
+- [ ] Working group members: Identify additional open source assessment tools that could expose precomputed findings through MCP
+- [ ] Working group members: Explore evaluation criteria for freshness, completeness, provenance, and explainability in agent-accessible project assessments
+
+
+
+
 ## Summary July 21
 
 This was the fifth meeting of the TODO Group Agentic AI to Empower OSPOs working group. The meeting included a show-and-tell on an agentic Software Composition Analysis (SCA) and compliance workflow built around GitHub Actions, and focused on a practical problem for OSPOs: how to turn the growing volume of open source dependency, licensing, security, project health, and AI-related signals into actionable decisions without requiring humans to manually review every signal
@@ -92,30 +430,11 @@ The discussion reinforced that the agent should not necessarily become a replace
 
 A central discussion focused on what should happen when an agent finds a problem.
 
-Participants asked about the reaction from engineering teams when automated tools produce findings. Experience shared during the session was mixed:
-
-- some developers appreciate receiving findings already summarized and prepared for action
-- others are uncomfortable when automation independently decides what should be changed
-- automatically creating work for developers can create resistance when there is insufficient context
-- the usefulness of automation depends heavily on where the human is inserted into the process
-
-One pattern discussed was to separate **problem discovery** from **remediation authorization**.
-
-Instead of allowing an agent to independently identify, prioritize, and fix every issue, an intermediate triage step could surface the problem to a person. The human could then decide that a specific issue should be addressed, after which an agent could prepare a proposed implementation.
-
-Another workflow described during the discussion was:
-
-- an issue or ticket defines the problem to solve
-- a local or developer-facing agent works from that approved intent
-- the agent prepares a solution
-- the agent opens a pull request
-- the pull request remains pending for human review and approval
-
-This keeps the agent useful for implementation while avoiding a model where every detected signal automatically becomes a code change.
+Participants asked about the reaction from engineering teams when automated tools produce findings. Experience shared during the session was mixed. One pattern discussed was to separate **problem discovery** from **remediation authorization**: Instead of allowing an agent to independently identify, prioritize, and fix every issue, an intermediate triage step could surface the problem to a person. The human could then decide that a specific issue should be addressed, after which an agent could prepare a proposed implementation.
 
 ### Verified Intent and Reviewability
 
-The session connected this human-in-the-loop model to the concept of **Verified Intent Development (VID)**, a methodology for AI-assisted software development based on making the intended change explicit and ensuring that generated code remains understandable and verifiable by humans.
+The session connected the human-in-the-loop concept to the concept of **Verified Intent Development (VID)**, a methodology for AI-assisted software development based on making the intended change explicit and ensuring that generated code remains understandable and verifiable by humans.
 
 The discussion highlighted principles such as:
 
@@ -210,7 +529,7 @@ Participants discussed a model where individual teams or repositories create the
 
 Participants noted that copying the same skill into many repositories creates a maintenance problem. Where possible, organizations may prefer referencing a source of truth or using mechanisms that keep distributed copies synchronized.
 
-For the working group, this also raised the possibility of maintaining pointers to existing resources rather than copying every workflow into the TODO repository.
+For the working group, this also raised the possibility of maintaining pointers to existing resources rather than copying every workflow into a TODO repository.
 
 A shared resource could provide:
 
@@ -220,7 +539,7 @@ A shared resource could provide:
 - references to relevant MCP servers or other agent tooling
 - guidance for building organization-specific workflows
 
-### Skills Marketplace and Ownership
+### Skills Marketplace for Organizations
 
 Participants discussed how organizations are beginning to think about internal "skills marketplaces" or catalogs.
 
@@ -234,15 +553,7 @@ The idea is that many engineers and teams may be able to create skills, but an o
 - what happens when a skill becomes outdated
 - how domain-specific skills are validated
 
-One model discussed was for a developer experience or similar engineering function to operate the central marketplace while allowing individual teams to continue developing their own skills. However, ownership of the content should remain with the relevant domain experts.
-
-Examples discussed included:
-
-- security-related skills should involve or be owned by security teams and OSPO teams
-- licensing-related skills should involve legal and OSPO experts
-- engineering-specific skills should be maintained by the relevant engineering teams
-
-This was compared to familiar governance patterns rather than treated as a completely new AI problem. Organizations already have domain ownership, code review, repository maintainership, publishing criteria, and approval processes. Similar mechanisms can be applied to reusable agent skills.
+One model discussed was for a developer experience or similar engineering function to operate the central marketplace while allowing individual teams to continue developing their own skills, with the "ownership" of the content should remain with the relevant domain experts. For example:
 
 ### Internal Versus External Skill Distribution
 
@@ -261,15 +572,11 @@ Externally, organizations may want a much more curated experience. Skills publis
 
 One participant suggested that MCP may be particularly useful for exposing capabilities externally, while an internal repository and synchronization model can work well for organization-specific skills.
 
-The discussion did not establish one universal architecture, but highlighted **discoverability, ownership, curation, and lifecycle management** as emerging organizational requirements.
-
 ### Implications for OSPOs
 
 The meeting demonstrated that agentic SCA is not only a compliance automation problem.
 
-As organizations start creating agent workflows around licensing, security, project health, publishing, contribution management, and other open source processes, OSPOs may need to think about the surrounding knowledge and governance layer.
-
-Potential OSPO roles discussed or implied by the session include:
+As organizations start creating agent workflows around licensing, security, project health, publishing, contribution management, and other open source processes, OSPOs may need to think about the surrounding knowledge and governance layer. Potential OSPO roles discussed or implied by the session include:
 
 - defining which open source decisions can be automated
 - identifying where human approval remains necessary
@@ -281,7 +588,7 @@ Potential OSPO roles discussed or implied by the session include:
 - helping define release-readiness workflows for private repositories before publication
 - sharing reusable workflows with the broader OSPO community where possible
 
-A recurring theme was that domain expertise still matters. Agentic AI can make execution faster, but organizations still need people who understand which evidence is authoritative, what the policy means, what constitutes an acceptable decision, and who is accountable for maintaining those rules.
+A recurring theme was that domain expertise matters. Agentic AI can make execution faster, but organizations still need people who understand which evidence is authoritative, what the policy means, what constitutes an acceptable decision, and who is accountable for maintaining those rules.
 
 ### Mapping to Working Group Workstreams
 
@@ -315,30 +622,21 @@ This could provide a useful model for describing different levels of autonomy in
 
 #### Workstream 2: Skills, Prompts, and Workflow Library
 
-This session was particularly relevant to the skills and workflow library.
-
-Potential reusable artifacts discussed include:
+This session was particularly relevant to the skills and workflow library. Potential reusable artifacts discussed include:
 
 - license compliance analysis skills
 - dependency assessment skills
 - open source release-readiness skills
 - project-health analysis prompts
 - security-focused analysis skills
-- maintainer-health or sustainability analysis skills
-- reusable GitHub Actions workflows
+- maintainer-health skills
 - policy datasets for agent decision support
 - references to existing MCP servers and agent tooling
-- examples of central organizational skill repositories
 - skill contribution and curation policies
-- synchronization patterns for keeping distributed skills current
-
-The discussion suggested that the working group does not necessarily need to duplicate upstream projects. A useful community resource could instead provide a curated index pointing to maintained sources of truth while also identifying gaps where OSPO-specific reusable skills should be created.
 
 #### Workstream 3: Adoption and Evaluation
 
-The session surfaced several criteria for evaluating an agentic workflow beyond whether it technically works.
-
-Possible evaluation questions include:
+The session surfaced several criteria for evaluating an agentic workflow beyond whether it technically works. Possible evaluation questions include:
 
 - Does the workflow reduce the number of findings a human must manually interpret?
 - Is the underlying evidence still visible and traceable?
@@ -364,12 +662,8 @@ The discussion also expanded the working group's focus from individual agents to
 
 - [x] Working group coordinator: Add the anonymized July 21 meeting summary to the working group repository
 - [ ] Working group coordinator: Capture the agentic SCA / GitHub Actions workflow as a show-and-tell example under the working group's practical use cases
-- [ ] Working group chairs: Consider adding agentic SCA and pre-release open source readiness as explicit examples under the use cases and maturity mapping workstream
-- [ ] Working group chairs: Consider documenting levels of agent autonomy from signal collection through recommendation, human authorization, remediation, and final human review
 - [ ] Working group chairs and interested participants: Explore creating a curated index of reusable OSPO agent skills, workflows, MCP resources, and upstream projects
 - [ ] Working group members: Share examples of how their organizations store, distribute, curate, and maintain reusable agent skills
-- [ ] Working group members: Share examples of contribution or governance policies used for internal skill repositories or skills marketplaces
-- [ ] Working group members: Identify existing internal open source release-readiness checks that could potentially be expressed as reusable agent skills or workflows
 
 ## Summary July 7
 
