@@ -8,6 +8,7 @@ When adding notes for a new meeting:
    - [YYYY-MM-DD](#summary-month-day)
 
 # Table of Contents:
+- [2026-09-15](#summary-september-15)
 - [2026-09-01](#summary-september-1)
 - [2026-07-21](#summary-july-21)
 - [2026-07-07](#summary-july-7)
@@ -15,7 +16,156 @@ When adding notes for a new meeting:
 - [2026-06-09](#summary-june-9)
 - [2026-05-26](#summary-may-26)
 
+## Summary September 15
 
+The TODO Group Agentic AI to Empower OSPOs working group welcomed the Centers for Medicare & Medicaid Services Open Source Program Office (CMS OSPO) for a session on AI governance, software inventories, and practical AI-assisted metadata generation. The session connected two aspects of OSPO work: helping translate AI policy into operational practices, and reducing the effort required to document and share software. The demonstration combined deterministic retrieval of repository information with a small language model running locally in the browser and a human review step before applying its suggestions.
+
+The presenters explicitly noted that the demonstrated workflow was not necessarily agentic AI. Its relevance was a practical example of using AI for a bounded OSPO task while keeping infrastructure requirements low and users in control of the output.
+
+### CMS OSPO and AI Governance
+
+CMS OSPO described how its existing responsibilities intersect with AI adoption. Software supply chain security, repository health, inventory management, and open source contribution practices all create opportunities for the OSPO to support broader AI governance efforts.
+
+The presentation highlighted concerns including:
+
+- low-quality or extractive AI-generated contributions to open source projects
+- AI-enabled attacks against software supply chains and agency systems
+- excessive or ineffective use of computing and organizational resources
+- disclosure of sensitive information
+- the need for clear guidance on responsible use and sharing
+
+The team maintains an [AI section in the CMS OSPO Guide](https://dsacms.github.io/ospo-guide/outbound/ai/) as a central entry point for policies, governance resources, initiatives, and tools. Some linked resources are intended for internal use even though the guide itself is publicly accessible.
+
+The presenters emphasized that the OSPO contributes to a wider organizational effort. CMS' AI Cross-Cutting Initiative leads agency-wide AI strategy and governance work, and the OSPO collaborates with that community on implementation and open source concerns.
+
+### Federal AI Policy and Public Inventories
+
+The governance overview referenced HHS and CMS AI strategies, the [CMS AI Playbook](https://ai.cms.gov/CMS-AI-Playbook.pdf), and two memo:
+
+- [M-25-21: Accelerating Federal Use of AI through Innovation, Governance, and Public Trust](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf)
+- [M-25-22: Driving Efficient Acquisition of Artificial Intelligence in Government](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf)
+
+The presentation connected these policy resources with implementation questions around software sharing and reuse, AI inventories, compliance planning, accountability, and risk management. CMS OSPO's role was described primarily at the implementation layer, where broad policy requirements need usable guidance and supporting tools.
+
+The [Federal Agency AI Use Case Inventory](https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory) was shared as a public resource for exploring how agencies report their AI use cases. The presenters described inventories as useful both for transparency and for discovering work that others may be able to learn from or reuse.
+
+The session also introduced the software-inventory tooling CMS OSPO has been developing to support SHARE IT Act implementation. This provided the context for the `code.json` demonstration.
+
+### Show-and-Tell: AI-Assisted `code.json` Generation
+
+The CMS OSPO team demonstrated a web form that helps project maintainers create a `code.json` metadata file. The aim is to distribute metadata creation across project teams rather than requiring a small central OSPO to manually document every repository.
+
+The workflow combines three sources of information:
+
+| Source | Role in the workflow |
+| --- | --- |
+| GitHub repository information | Populate fields that can be retrieved deterministically |
+| Browser-based language model | Draft additional descriptive fields from repository context |
+| Project maintainer | Review suggestions, supply missing information, and decide what to apply and share |
+
+Users begin by entering a GitHub repository URL. The form can retrieve available repository information and prefill some fields. Other fields require interpretation or information that cannot be obtained directly through the API.
+
+To reduce that manual work, the team added an AI-assisted drafting step using WebLLM. The demonstrated implementation used Llama 3.2 with one billion parameters, running in the browser on the user's own GPU. The model is downloaded and cached locally for subsequent use.
+
+This approach allows the form to remain a static website hosted on GitHub Pages without requiring a separate inference server or a hosted model API. Repository retrieval and explicit sharing still involve external services; the model inference itself runs locally.
+
+### Human Review and the Limits of Generated Metadata
+
+The demonstration showed AI-generated suggestions such as a longer project description and categories. Users inspect the suggestions in a review panel before applying selected values to the form.
+
+The presenters acknowledged the limits of a small model. It can help with a narrow drafting task, but its output still needs review and should not be treated as authoritative project information.
+
+Some fields cannot be reliably generated from repository content. Examples included labor hours and contract numbers, which must be supplied directly by someone with the relevant knowledge.
+
+The demonstrated sequence was:
+
+1. Enter the repository URL
+2. Retrieve the available repository metadata
+3. Run the optional local AI drafting step
+4. Review and apply appropriate suggestions
+5. Complete the remaining fields manually
+6. Generate the `code.json` file
+7. Copy, download, or explicitly submit the resulting metadata through an available sharing option
+
+The tool also supports creating a pull request. During Q&A, the presenters clarified that the GitHub token is used for operations such as pull request creation, authenticated API access to private repositories, and API rate-limit handling.
+
+### Lightweight Infrastructure for Resource-Constrained OSPOs
+
+The CMS OSPO team framed the architecture as a response to limited staffing and infrastructure capacity. A static web form with local inference can provide useful assistance without requiring the OSPO to operate a model-serving backend.
+
+The approach also makes the boundary between drafting and sharing visible: the model runs locally, and the user decides when to apply or transmit the resulting information.
+
+The discussion included broader examples of using web forms and GitHub to support structured submissions and maintain portable data. The underlying idea was to build on existing infrastructure where it meets the need, while keeping information available for reuse elsewhere.
+
+### Repository Metadata and Aggregated Software Inventories
+
+A participant asked where the generated metadata belongs and who is responsible for adding it. The presenters explained a distributed approach: project teams generate their own `code.json` files and commit them to their repositories, while inventory tooling collects and aggregates that information.
+
+The team showed the [Code.gov fork maintained by CMS OSPO](https://dsacms.github.io/code-gov/). They described an index-generation process that collects metadata from GitHub and agency sources into a broader software inventory.
+
+This separates two responsibilities:
+
+- project maintainers contribute and maintain information about their own software
+- shared tooling aggregates that information to support discovery and reporting
+
+The discussion illustrated how repository-level metadata can support agency-wide and cross-agency inventories without making the OSPO the manual author of every record.
+
+### Interoperability Across Metadata Standards
+
+The session continued the previous meeting's discussion of structured project metadata. CMS OSPO noted that the earlier introduction to CNCF's `.project` metadata work had prompted interest in considering it alongside the team's existing `code.json` practices.
+
+Participants also discussed `publiccode.yml`, CodeMeta, and the possibility of making metadata easier for tools to locate and collect. A [crosswalk from `code.json` to CodeMeta](https://github.com/codemeta/codemeta/blob/master/crosswalks/code-json.csv) was shared as a concrete interoperability resource.
+
+The presenters expressed interest in connecting federal software metadata with the wider public-sector open source ecosystem, including software preservation and digital public goods efforts. These were described as directions for further collaboration, rather than completed integrations.
+
+The discussion favored reusing existing standards and mappings where possible, while avoiding unnecessary abstraction and duplicated work. No common metadata directory or single replacement standard was agreed in the captured notes.
+
+### How Standards Are Selected
+
+A participant asked how a government agency decides which standards to adopt. CMS OSPO described a sequence beginning with applicable law and policy, followed by agency guidance and implementation details.
+
+Within those constraints, the team looks at practices used by other OSPOs and open source projects, publishes reference implementations, and seeks feedback through communities such as this working group. Public comment processes were also highlighted as opportunities for outside contributors to inform policy and standards choices.
+
+The broader message was that mandated requirements and community interoperability need to be considered together. Working implementations can help identify where existing standards fit and where additional mappings or improvements are needed.
+
+### Mapping to Working Group Workstreams
+
+The session offers examples and evaluation questions relevant to the group's three workstreams
+
+#### Workstream 1: Use Cases and Maturity Mapping
+
+- AI-assisted creation of repository metadata
+- local inference for a bounded OSPO documentation task
+- distributed metadata maintenance across project teams
+- aggregation of software inventories for discovery and reporting
+- OSPO participation in the implementation of broader AI governance
+
+#### Workstream 2: Skills, Prompts, and Workflow Library
+
+Potential reusable resources include:
+
+- forms that combine deterministic metadata retrieval with AI-assisted drafting
+- review interfaces that let users apply only selected suggestions
+- static-site patterns for running small models locally
+- metadata templates and crosswalks between established schemas
+- public OSPO guides that connect policy resources with practical implementation tools
+
+#### Workstream 3: Adoption and Evaluation
+
+The demonstrated design suggests several questions for evaluating similar workflows:
+
+- Which fields can be retrieved deterministically, and which need interpretation?
+- Is a small local model adequate for the intended task?
+- Can users inspect and correct suggestions before applying them?
+- Which information must be provided directly by a maintainer?
+- How will repository metadata remain current after initial generation?
+
+### Action Items
+
+The captured notes do not record assigned owners or deadlines. The following are proposed follow-ups based on the presentation and discussion:
+
+- [ ] Review the CMS AI governance resources and identify reusable approaches for connecting OSPO guidance with organization-wide AI initiatives
+- [ ] Continue sharing implementation feedback and opportunities for collaboration across OSPOs
 
 ## Summary September 1
 
