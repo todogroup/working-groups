@@ -8,6 +8,7 @@ When adding notes for a new meeting:
    - [YYYY-MM-DD](#summary-month-day)
 
 # Table of Contents:
+- [2026-09-29](#summary-september-29)
 - [2026-09-15](#summary-september-15)
 - [2026-09-01](#summary-september-1)
 - [2026-07-21](#summary-july-21)
@@ -15,6 +16,199 @@ When adding notes for a new meeting:
 - [2026-06-30](#summary-june-30)
 - [2026-06-09](#summary-june-9)
 - [2026-05-26](#summary-may-26)
+
+
+## Summary September 29
+
+The TODO Group Agentic AI to Empower OSPOs working group welcomed Diego Mastroianni for a show-and-tell on using AI coding tools to build an Open Source Hub. The presentation began with a prototype for mapping open source projects against contribution strategy, then showed a broader internal application connecting projects, people, events, and other OSPO information
+
+The session explored how AI-assisted development can help OSPO practitioners turn a well-understood problem into a working application. Diego reported building the initial MVP in approximately one week, following several months of understanding the information landscape and the requirements
+
+### Show-and-Tell: Open Source Portfolio Strategy Mapper
+
+The presentation started with an [early portfolio strategy mapper prototype](https://oss-portfolio-strategy-mapper-877710891143.us-west1.run.app/). Its purpose was to make contribution strategy visible and give people a concrete starting point for discussion. 
+
+<img width="2052" height="1071" alt="image (4)" src="https://github.com/user-attachments/assets/cb32f899-7c32-4379-9a73-d73372255cb8" />
+
+> ps: Names, affiliations, and other data shared in the prototype screenshots is fake data
+
+The matrix brought together two dimensions:
+
+- the strategic role of a project, using categories such as spearhead, incumbent, enabler, and utility
+- the organization's level of participation, ranging from silent use through participation, contribution, leadership, and sole stewardship
+
+Projects could be compared against a desired participation level. This helped illustrate situations where a strategically important project might need stronger involvement, or where an organization carrying most of the work might need to build a broader contributor community.
+
+<img width="2047" height="1072" alt="image (2)" src="https://github.com/user-attachments/assets/0f2767fa-271b-4d47-be67-ac7c28da4a28" />
+<img width="2046" height="1044" alt="image (1)" src="https://github.com/user-attachments/assets/bd759253-4ada-4289-8045-1969010492ba" />
+
+The prototype made it easier to discuss whether the current relationship with a project matched its importance and the organization's goals. Diego described choosing an interactive prototype instead of a static slide to communicate the idea and refine it through conversation. The application provided a shared reference that people with different backgrounds could use to discuss priorities and exchange knowledge.
+
+### From a Strategy Matrix to an Open Source Hub
+
+The broader hub extended the matrix into a connected view of OSPO activity. The presentation described a knowledge graph concept linking projects, people, events, patents, and communications.
+
+The underlying problem was fragmentation: relevant information existed across lists, spreadsheets, documents, and other internal resources, with inconsistent freshness and limited visibility into the relationships between them.
+
+The demonstration included:
+
+- a project inventory and strategic participation matrix
+- project pages with context, contributor relationships, current participation, and target participation
+- a directory of internal open source champions and their project roles
+- distinctions between roles such as maintainers, committers, and project management committee members
+- an event directory with conference information and opportunities for participation
+- analytics showing changes in project roles and the composition of the portfolio
+
+The interface also included areas for patents, documentation, and other resources. These formed part of the broader hub concept; the walkthrough focused primarily on projects, people, events, and analytics.
+
+The project and contributor names shown in the demo were fictitious. The screenshots should therefore be understood as illustrations of the interface and its relationships, rather than evidence about actual project priorities or individual affiliations.
+
+### What Made the One-Week MVP Possible?
+
+Participants asked what another OSPO should do differently if it wanted to build something similar in a week, whether the work used spec-driven development, and how the reasoning behind the application could be shared in prose.
+
+Diego emphasized that the short implementation period depended on clarity about the problem. Before building, he had spent several months discovering where information lived, identifying outdated or disconnected sources, and deciding how the pieces should fit together.
+
+The one-week estimate applied to the initial MVP connecting people, projects, and events. It did not cover all of the preparation or every improvement shown in the demonstration.
+
+The presentation referenced Cursor agents and Composer as development tools. Diego described using a clear mental model of the requirements to build and iterate on the prototype, rather than first producing an extensive written specification. The captured discussion did not establish a formal spec-driven development process.
+
+Moving toward internal deployment required additional work with engineering, including package choices, non-functional requirements, and integration into an existing CI/CD pipeline. The hub was deployed as a module within an existing internal application behind a VPN.
+
+The example illustrated how AI coding assistance can make a previously difficult-to-prioritize internal tool feasible, while still requiring organizational knowledge and engineering support.
+
+### Adoption, Self-Service, and Keeping Information Current
+
+Participants questioned whether the hub was mainly an OSPO tool or something other employees would use directly. One concern was the risk of creating another dashboard that people rarely visit.
+
+Diego explained that the hub was becoming a central reference for project changes, people, events, and related initiatives. Instead of leaving information scattered across messages and documents, the team brought it back into the hub so users could find it later.
+
+Usage analytics were available through the existing application infrastructure. The presenter described an initial spike after introducing the hub, followed by continued use, but did not provide a quantified adoption rate in the captured notes.
+
+The goal was not necessarily daily visits. It was to establish a known place to answer a question when someone needed information about a project, contributor, or upcoming event.
+
+Self-service access and self-service editing were distinct:
+
+- users could browse and find information directly
+- updates were made through pull requests
+- contributors could propose changes to their own pages or add their participation to an event
+- there was no separate wiki-style editing database
+
+Diego acknowledged that he could remain a bottleneck for some updates. He preferred to establish whether people would contribute before building a more elaborate editing system.
+
+### Costs and Ongoing Maintenance
+
+Participants asked about both the cost of creating the MVP and the ongoing cost of data collection or maintenance. The presenter reported no additional token charge for the initial work under the credits available to him. He also acknowledged that this did not reflect the underlying cost of inference. No measured token total or transferable build-cost estimate was supplied during the captured discussion.
+
+For ongoing operation, the distinction was clearer: the core content was Markdown with labels that the application used to render and connect information. Routine content maintenance did not require an LLM call. AI assistance could optionally speed up an edit, and new modules or functionality could involve further AI-assisted development.
+
+The reported token experience should not be interpreted as a zero-cost operating model. A complete estimate for another OSPO would also need to account for hosting, engineering time, data preparation, maintenance, and any future integrations.
+
+### Data Quality, Affiliations, and Useful Signals
+
+The discussion highlighted recurring OSPO questions:
+
+- Which open source projects matter most to the organization?
+- Who contributes to them, and in what capacity?
+- How are those projects maintained?
+- Who should be contacted when security or licensing risks change?
+- Which colleagues are speaking at or participating in relevant events?
+
+Participants described the difficulty of extracting useful information from large collections of scans, budgets, and repository data. The challenge was not simply obtaining more data, but identifying information that could support a decision or connect someone with the right person.
+
+Questions were raised about how the hub determines who works on which project, whether affiliations come from internal sources or GitHub, and how well those affiliations hold up with real data. The captured notes do not provide a detailed answer or validation method for those questions.
+
+Event and community-engagement information was identified as a potentially reusable part of the approach, even where organizational strategy and individual relationship data could not be shared.
+
+### Sharing Rebuild Prompts and Reusable OSPO Applications
+
+Participants asked whether the presenter could use his AI tool to generate a prompt describing how to rebuild the application. A related suggestion was to collect prompts for building OSPO applications in a curated TODO resource, linking to existing workflow collections where appropriate.
+
+Diego distinguished between the potentially reusable application structure and the internal information it contained. Names, contribution relationships, and strategic project priorities could require approval before disclosure, even when some underlying facts were already public.
+
+The discussion explored sharing a sanitized prompt, screenshots with fictitious data, or the application's general structure and mechanisms. Participants also requested cost information and implementation guidance to help others understand what would be involved in adapting the approach.
+
+There was interest in collaborating on reusable patterns. The captured notes do not establish that the complete internal hub, a rebuild prompt, or a new shared collection had already been published.
+
+### AI-Assisted Development and Open Source Contributions
+
+The group also discussed whether easier AI-assisted development could undermine open source collaboration. Participants described opportunities to work faster alongside concerns about contribution quality, attribution, and reviews produced without sufficient project context.
+
+The discussion included the need for contribution policies, clear expectations, and moderation practices. AI was also described as a tool that could assist with researching and drafting those policies.
+
+The emphasis was on improving contribution workflows while retaining accountability for the work submitted. Faster generation alone does not establish that a contribution is useful or appropriate for a project.
+
+An [article on forking and AI-assisted development](https://www.linkedin.com/pulse/fork-back-menu-eric-weddington-9wxxe/) was shared as an additional perspective. It was a discussion resource, rather than an agreed working group position.
+
+### Deterministic Tools Beneath Agentic Workflows
+
+A participant suggested exploring whether internal collaboration channels could provide a crowdsourced feed into the hub. Diego noted that live integrations would change the risk profile of an application currently operating in a restricted environment with limited connections to other systems.
+
+He also described a possible future use of agents to discover newly announced events and update the hub. This was an aspiration, not an existing demonstrated capability. Running agents autonomously could introduce additional expense and operational risks whose benefits would need to be assessed.
+
+The closing discussion proposed keeping deterministic tools underneath AI assistance wherever possible:
+
+1. Define a script or tool for each data retrieval or processing task.
+2. Combine those operations into a repeatable pipeline, using standard CI where appropriate.
+3. Allow an agent to invoke or assist with the pipeline when useful.
+4. Preserve the ability to run the underlying process without agent access.
+
+This separates the value of AI-assisted coordination from the mechanics of routine data processing. It also allows the workflow to remain usable when a model or agent is unavailable, provided the necessary environment and source access are still available.
+
+### Mapping to Working Group Workstreams
+
+#### Workstream 1: Use Cases and Maturity Mapping
+
+The session provided examples of:
+
+- rapid prototyping of OSPO applications with AI coding assistance
+- portfolio strategy and contribution-level mapping
+- connecting projects, people, roles, and events
+- internal discovery and self-service access to OSPO information
+- using a working prototype to clarify requirements and support strategic conversations
+
+It also illustrated distinct maturity stages: an early public prototype, an internal MVP, subsequent engineering improvements, and possible future agent-driven integrations.
+
+#### Workstream 2: Skills, Prompts, and Workflow Library
+
+Potential reusable resources discussed included:
+
+- sanitized rebuild prompts for OSPO applications
+- example data and screenshots that preserve confidentiality
+- reusable models for project, contributor, and event relationships
+- Markdown-based content structures and pull-request update workflows
+- implementation notes covering requirements, preparation, costs, and limitations
+- deterministic data-processing tools that agents can invoke
+
+#### Workstream 3: Adoption and Evaluation
+
+The discussion surfaced evaluation questions including:
+
+- How much problem discovery and data preparation precede the build?
+- Which capabilities belong to the prototype, and which are ready for ongoing use?
+- How are contributor identities and affiliations verified?
+- Does the hub answer recurring questions that users actually have?
+- Who owns updates, and where do bottlenecks remain?
+- What are the build and operating costs beyond available AI credits?
+- Which information can be shared, and which requires internal approval?
+- Do live integrations or autonomous updates provide enough value to justify their risks?
+- Can routine processes run without an agent?
+
+### Final Remarks
+
+The group showed interest in reusing the approach through sanitized prompts and application patterns. The closing discussion reinforced a practical architecture: use AI where it helps build, interpret, or coordinate work, while preserving deterministic processes for repeatable tasks and human ownership of the information
+
+### Action Items
+
+The following follow-ups were discussed or suggested; the captured notes do not record deadlines or a finalized publication commitment:
+
+- [ ] Explore sharing a sanitized rebuild prompt or reusable application structure, with fictitious data and appropriate internal review
+- [ ] Capture implementation guidance explaining the preparation behind the one-week MVP and the additional work needed for internal deployment
+- [ ] Investigate the token usage and available cost information to help other OSPOs estimate adaptation effort
+- [ ] Consider a curated collection of prompts and workflows for building OSPO applications, referencing existing resources where useful
+- [ ] Continue exploring reusable project, contributor, and event metadata patterns, including how affiliations are validated
+- [ ] Capture the deterministic-tool-plus-agent approach as an adoption and evaluation pattern for future examples
+
 
 ## Summary September 15
 
