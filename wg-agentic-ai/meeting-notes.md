@@ -39,7 +39,7 @@ David introduced three connected projects:
 | [gw-design-review](https://github.com/gw-ospo/gw-design-review) | Guides AI review of materials against brand standards and design principles |
 | [gw-presentation](https://github.com/gw-ospo/gw-presentation) | Supports creating GW-branded presentations |
 
-Together, these projects connect the standards the OSPO wants to follow with instructions for applying them. The brand resources define the visual system, the review skill checks existing materials, and the presentation skill supports producing slides within that system.
+The brand resources define the visual system, the review skill checks existing materials, and the presentation skill supports producing slides within that system.
 
 David used the presentation skill to help create the deck shown during the session. The [presentation project and source](https://github.com/gw-ospo/todo-ai-agent-presentation) were shared with the group.
 
@@ -117,10 +117,6 @@ The example also accommodated different preferences within the team. Staff could
 
 ### Mapping to Working Group Workstreams
 
-#### Workstream 1: Use Cases and Maturity Mapping
-
-The session demonstrated the use of skills for recurring OSPO communications tasks, including design review and presentation creation. It showed how AI assistance can fit into an existing team workflow with human revision and approval.
-
 #### Workstream 2: Skills, Prompts, and Workflow Library
 
 GW OSPO shared concrete projects that combine:
@@ -131,7 +127,7 @@ GW OSPO shared concrete projects that combine:
 - Scripts supporting measurable checks.
 - Source files and themes for presentation creation.
 
-Separating general instructions from institutional branding provides a useful pattern for adaptation by other OSPOs.
+Separating general instructions from institutional branding provides a useful pattern for adaptation by other OSPOs
 
 #### Workstream 3: Adoption and Evaluation
 
@@ -148,10 +144,9 @@ The session suggested questions including:
 
 The captured notes do not establish assigned owners or deadlines. Proposed follow-ups include:
 
-- [Input] Review the GW OSPO projects as concrete contributions to the working group’s skills and workflow library.
-- [Input] Explore adapting the design-review skill with another OSPO’s brand standards.
-- [Input] Document the combination of instructions, references, scripts, and human review as a reusable OSPO workflow.
-- [Input] Capture the presentation project as an example of skills supporting creation through editable source and separate formatting.
+- [Input] Review the GW OSPO projects as contributions to the working group’s skills and workflow library
+- [Input] Document the combination of instructions, references, scripts, and human review as a reusable OSPO workflow
+- [Input] Capture the presentation project as an example of skills supporting creation through editable source and separate formatting
 
 ## Summary September 29
 
