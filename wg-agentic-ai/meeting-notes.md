@@ -8,6 +8,7 @@ When adding notes for a new meeting:
    - [YYYY-MM-DD](#summary-month-day)
 
 # Table of Contents:
+- [2026-10-27](#summary-october-27)
 - [2026-09-29](#summary-september-29)
 - [2026-09-15](#summary-september-15)
 - [2026-09-01](#summary-september-1)
@@ -17,6 +18,135 @@ When adding notes for a new meeting:
 - [2026-06-09](#summary-june-9)
 - [2026-05-26](#summary-may-26)
 
+
+## Summary October 27
+
+The TODO Group Agentic AI to Empower OSPOs working group welcomed David Lippert, director of the George Washington University Open Source Program Office, to present **“How the GW OSPO Uses Skill.md and AI.”**
+
+David showed how GW OSPO uses reusable skills to give AI tools explicit instructions, organizational context, reference materials, and supporting scripts. The main example was a design-review project used in the OSPO’s communications workflow. A related presentation skill demonstrated how the same approach can support creating branded materials.
+
+The session provided a practical example of an OSPO turning its working practices into shared, inspectable resources that guide AI assistance and remain subject to human review.
+
+### Show-and-Tell: GW OSPO’s Skills Project
+
+GW OSPO supports students, faculty, staff, and researchers through education, consultations, workshops, events, and collaboration. Producing communications for these activities creates a recurring need for materials that follow university branding and communicate clearly.
+
+David introduced three connected projects:
+
+| Project | Purpose |
+|---|---|
+| [gwospo-brand](https://github.com/gw-ospo/gwospo-brand) | Maintains the OSPO’s brand assets and design system |
+| [gw-design-review](https://github.com/gw-ospo/gw-design-review) | Guides AI review of materials against brand standards and design principles |
+| [gw-presentation](https://github.com/gw-ospo/gw-presentation) | Supports creating GW-branded presentations |
+
+The brand resources define the visual system, the review skill checks existing materials, and the presentation skill supports producing slides within that system.
+
+David used the presentation skill to help create the deck shown during the session. The [presentation project and source](https://github.com/gw-ospo/todo-ai-agent-presentation) were shared with the group.
+
+### How `SKILL.md` Guides the Work
+
+The design-review project showed what sits behind a reusable skill.
+
+Its `SKILL.md` file tells Claude how to examine a design and write the resulting review. Supporting folders provide the information and tools needed to carry out those instructions:
+
+- **Brand resources:** the design rulebook, approved colors, and audience context.
+- **References:** brand checks, design principles, and the expected report format.
+- **Scripts:** tools for measuring contrast, auditing colors, and converting PDFs into images for inspection.
+
+This gives the AI a defined task, documented criteria, and a consistent output structure. The scripts support measurable checks, while the instructions guide interpretation and communication of the findings.
+
+The project therefore illustrates how an OSPO can make its own standards usable by an AI tool through a maintained collection of instructions and resources.
+
+### Using the Skill in the Communications Workflow
+
+David described a process that begins with materials created by the OSPO’s communications team. Team members can create their drafts manually or use AI assistance according to their preferences.
+
+David then uses the review skill to assess the draft and returns the findings to the team. They make changes, iterate, and approve the final material.
+
+The demonstrated sequence was:
+
+1. Create a flyer, newsletter, presentation, or other communications material.
+2. Provide the draft and relevant context to the AI tool with the skill available.
+3. Generate a review against the documented standards.
+4. Return the findings to the people responsible for the material.
+5. Revise, inspect, and approve the result.
+
+David emphasized the value of supplying context in the request, including the type of material, where it will appear, its audience, and what readers should do next.
+
+### Example: Reviewing a Student Awards Flyer
+
+The presentation used a student awards flyer to show how the skill works in practice.
+
+The review identified an off-brand blue, headline typography that did not follow the brand rules, and a visual hierarchy that gave the prize amount more prominence than the application deadline.
+
+The checks combined GW-specific requirements with four general design principles: proximity, alignment, repetition, and contrast.
+
+The report was structured to help its recipients act on the feedback. It began with an interpretation of the material and its strengths, then separated findings into required fixes, readability improvements, and optional suggestions. It ended with a short list of priorities.
+
+This report structure was part of the skill itself. GW OSPO had encoded both what the AI should check and how it should deliver feedback to students and staff.
+
+### Sharing and Adapting the Skills
+
+David explained that the project had been reorganized to separate GW-specific branding from general design principles. Another organization could reuse the review approach while supplying its own colors, typography, and brand requirements.
+
+The presentation also described different ways to make the skill available to an AI tool, including a packaged ZIP for Claude’s web interface and a local repository or folder for desktop workflows.
+
+David reported using Claude desktop. He had not tested the workflow across all other AI tools, so portability beyond the demonstrated setup remained an area for further exploration.
+
+For the working group, the reusable contribution is the project structure: instructions, organizational references, a defined report format, and supporting checks that other OSPOs can inspect and adapt.
+
+### Presentation Skills and the Separation of Content and Format
+
+The presentation skill extended the same approach from reviewing materials to helping create them.
+
+David showed how Quarto keeps presentation content in a readable `.qmd` source file and styling in a separate theme. A person can edit the source directly or ask an AI agent to change it, then render the presentation.
+
+This separation was a key takeaway: **people retain access to the content and can change it independently of the visual format.** David demonstrated switching the presentation’s theme while keeping its content.
+
+The session also included an illustrative token comparison showing that compact Quarto source required fewer output tokens than the LaTeX, HTML, and Word representations in the example. The broader implication was to consider the source format as part of designing an efficient, reviewable AI workflow.
+
+Participants asked why Quarto was useful compared with ordinary Markdown. The discussion connected its value to publishing multiple types of output from readable source. David acknowledged that he was relatively new to Quarto and did not provide a detailed technical comparison.
+
+### Human Review and Adoption
+
+Human judgment remained part of both the review and creation workflows.
+
+David described problems with AI-assisted image handling, including unwanted cropping of people’s faces. The experience reinforced the need to inspect the final artifact even when the tool follows documented instructions.
+
+The example also accommodated different preferences within the team. Staff could continue creating materials manually while benefiting from AI-assisted review later in the process.
+
+### Mapping to Working Group Workstreams
+
+#### Workstream 2: Skills, Prompts, and Workflow Library
+
+GW OSPO shared concrete projects that combine:
+
+- `SKILL.md` instructions.
+- Organization-specific standards and assets.
+- Reusable review criteria and report formats.
+- Scripts supporting measurable checks.
+- Source files and themes for presentation creation.
+
+Separating general instructions from institutional branding provides a useful pattern for adaptation by other OSPOs
+
+#### Workstream 3: Adoption and Evaluation
+
+The session suggested questions including:
+
+- Which recurring OSPO practices can be documented as reusable skills?
+- What organizational context must accompany the instructions?
+- Which findings can be measured through scripts?
+- Does the output help team members complete their work?
+- How much revision remains necessary?
+- Can another OSPO adapt the project using its own standards?
+
+### Action Items
+
+The captured notes do not establish assigned owners or deadlines. Proposed follow-ups include:
+
+- [Input] Review the GW OSPO projects as contributions to the working group’s skills and workflow library
+- [Input] Document the combination of instructions, references, scripts, and human review as a reusable OSPO workflow
+- [Input] Capture the presentation project as an example of skills supporting creation through editable source and separate formatting
 
 ## Summary September 29
 
