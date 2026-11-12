@@ -34,11 +34,11 @@ Lucas described reviewing a product’s dependencies with FOSSA to identify comp
 
 The investigation uncovered several overlapping considerations:
 
-- A derivative model and its base model had different licenses.
-- The model raised questions about intellectual property and copyrightability.
-- A commercial web service introduced contractual terms of use.
-- A requirement concerning NVIDIA GPUs extended into infrastructure choices.
-- Multiple licenses, contracts, and end-user agreements needed consideration.
+- A derivative model and its base model had different licenses
+- The model raised questions about intellectual property and copyrightability
+- A commercial web service introduced contractual terms of use
+- A requirement concerning NVIDIA GPUs extended into infrastructure choices
+- Multiple licenses, contracts, and end-user agreements needed consideration
 
 The example illustrated how a component discovered through an open source review can require decisions beyond the scope of a conventional software-license assessment.
 
@@ -134,27 +134,6 @@ The captured notes end as Lucas opens the floor. They do not record a resolution
 
 ### Mapping to Working Group Workstreams
 
-#### Workstream 1: Use Cases and Maturity Mapping
-
-The session provided examples of:
-
-- AI-related issues entering through existing component-compliance reviews.
-- Reviews spanning software licenses, model terms, service contracts, and infrastructure restrictions.
-- Gaps between available expertise and assigned responsibility.
-- A proposed organizational model for coordinating AI-component review.
-
-#### Workstream 2: Skills, Prompts, and Workflow Library
-
-Potential reusable resources include:
-
-- Intake templates for AI-component questions.
-- Fact-gathering checklists for specialist handoffs.
-- Routing guidance between OSPOs and AI governance functions.
-- Responsibility maps for investigation, review, and release clearance.
-- Case studies for comparing organizational practices.
-
-These are potential resources suggested by the session, rather than completed artifacts recorded in the notes.
-
 #### Workstream 3: Adoption and Evaluation
 
 The presentation raised questions including:
@@ -171,11 +150,8 @@ The presentation raised questions including:
 
 The captured notes do not establish assigned owners or deadlines. Proposed follow-ups include:
 
-- [Input] Share existing organizational workflows for handling AI-related component questions.
-- [Input] Review the AI Program Office proposal and identify strengths, gaps, and alternative structures.
-- [Input] Develop a reusable checklist of facts needed for specialist review.
-- [Input] Compare how organizations would route and resolve the CUDA Toolkit case study.
-- [Input] Clarify the responsibilities shared between OSPOs, legal specialists, and AI governance functions.
+- Share existing organizational workflows for handling AI-related component questions
+- Review the AI Program Office proposal and identify strengths, gaps, and alternative structures
 
 
 ## Summary October 27
