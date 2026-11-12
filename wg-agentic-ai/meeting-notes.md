@@ -8,6 +8,7 @@ When adding notes for a new meeting:
    - [YYYY-MM-DD](#summary-month-day)
 
 # Table of Contents:
+- [2026-11-10](#summary-november-10)
 - [2026-10-27](#summary-october-27)
 - [2026-09-29](#summary-september-29)
 - [2026-09-15](#summary-september-15)
@@ -17,6 +18,140 @@ When adding notes for a new meeting:
 - [2026-06-30](#summary-june-30)
 - [2026-06-09](#summary-june-9)
 - [2026-05-26](#summary-may-26)
+
+
+## Summary November 10
+
+The TODO Group Agentic AI to Empower OSPOs working group welcomed Lucas Gonze for a session on **where the OSPO fits in AI governance**.
+
+Drawing on a component-compliance review, Lucas explored how AI-related questions can cross the boundaries between open source licensing, commercial contracts, model-specific considerations, and infrastructure requirements. He introduced a proposed AI Program Office, including a workflow and specialist roles, as a starting point for discussion.
+
+The central question was how organizations can route these issues, assemble the necessary information, and assign responsibility when existing processes and expertise do not cover the full problem.
+
+### From Component Review to AI Governance
+
+Lucas described reviewing a product’s dependencies with FOSSA to identify components that did not meet corporate policy. What began as a familiar compliance task became more complicated when an AI-related component was flagged as proprietary.
+
+The investigation uncovered several overlapping considerations:
+
+- A derivative model and its base model had different licenses
+- The model raised questions about intellectual property and copyrightability
+- A commercial web service introduced contractual terms of use
+- A requirement concerning NVIDIA GPUs extended into infrastructure choices
+- Multiple licenses, contracts, and end-user agreements needed consideration
+
+The example illustrated how a component discovered through an open source review can require decisions beyond the scope of a conventional software-license assessment.
+
+### Gaps Between Available Expertise and Assigned Responsibility
+
+Lucas described difficulty identifying the right support within the organization. Available legal expertise covered different areas, but relevant knowledge, project assignment, and ownership did not align neatly.
+
+The problem was therefore broader than finding someone who understood a particular license. It included identifying who could take responsibility for the question, what information that person needed, and how the issue should move between teams.
+
+Lucas also described seeking input from the wider OSPO community about existing workflows. He used the experience to open a conversation about how practitioners could connect their knowledge and develop a more complete picture.
+
+### Making Decisions with Incomplete Information
+
+Lucas compared the current situation with earlier technological transitions, including the web, peer-to-peer systems, and Bitcoin, when organizations had to respond before established practices were widely available.
+
+He used the “fog of war” metaphor to describe the challenge: teams must make decisions even though no individual or specialist has complete information.
+
+In this framing, compliance teams are already routing AI-component questions while the boundaries between specialist areas remain unsettled. The practical need is to recognize uncertainty, understand the limits of available expertise, and make decisions as issues arise.
+
+The presentation was intended to help surface patterns and gaps across organizations, rather than establish a finished governance model.
+
+### Friction in Specialist Handoffs
+
+Lucas highlighted the operational difficulty hidden inside seemingly straightforward advice such as sending a question to a specialist attorney with a factual report.
+
+That handoff depends on knowing which facts the attorney needs. When the technical and legal questions are unfamiliar, the team preparing the report may not know what to collect, while the specialist may need more context before assessing the issue.
+
+This makes information gathering and coordination part of the governance work itself. Access to specialist expertise needs a usable process for bringing the right evidence and questions to that expertise.
+
+### Proposal: An AI Program Office
+
+Lucas introduced an AI Program Office as a **strawman organizational proposal** for the group to examine and improve.
+
+The proposed office would have similarities to an OSPO while developing expertise focused on AI-related issues. Its capabilities would include:
+
+- Understanding model-specific intellectual property considerations.
+- Maintaining knowledge of recurring licenses and contracts across open, community, and proprietary offerings.
+- Understanding the relevant legal risk landscape.
+- Keeping current with changes.
+- Supporting developers.
+- Accessing AI-focused legal expertise.
+
+Lucas explicitly presented this as a debatable model. The captured notes do not establish that the group endorsed creating a separate office or agreed on a universal organizational structure.
+
+### Proposed Workflow and the OSPO Boundary
+
+The proposed workflow distinguished ordinary open source component questions from issues requiring AI-specific review.
+
+Lucas gave the example of an AI-related component under an established open source license, such as Apache 2.0. In his proposed routing model, the OSPO would retain ownership of that component review. Other AI-related issues would move to the AI Program Office.
+
+Within the proposed office, the workflow would:
+
+1. Manage incoming tickets.
+2. Coordinate clearance and work with internal teams.
+3. Create an AI bill of materials, described in the presentation as an AIBOM.
+4. Route component issues to the appropriate specialist attorneys.
+
+The proposal made program management a central function. Someone would need to coordinate the review and its dependencies, alongside the specialists assessing individual questions.
+
+The captured notes do not define the AIBOM’s contents or establish a complete routing policy for every type of AI component.
+
+### Proposed Team and Collaboration with the OSPO
+
+Lucas outlined three roles for the proposed team:
+
+| Role | Focus in the proposed model |
+|---|---|
+| Technical Program Manager | Ticket management, coordination, and review progress |
+| Contract attorney | Contractual questions |
+| AI attorney | AI-specific legal questions, including familiarity with open licensing |
+
+He compared the program-management function with technical program management in a security organization.
+
+A participant asked how an AI office and an OSPO would work together, given how much AI infrastructure relies on open source. Lucas acknowledged the shared foundation while emphasizing differences in specialist knowledge.
+
+The exchange surfaced a central design question: how to retain the OSPO’s established expertise while providing access to additional capabilities, without creating unclear ownership between teams.
+
+### Case Study: Who Clears the Product for Release?
+
+Lucas closed the captured notes with a scenario for discussion.
+
+An engineer uses ScanCode to create an SBOM for an outgoing product and discovers a non-OSI component. Investigation identifies it as the NVIDIA CUDA Toolkit under the NVIDIA Software License Agreement.
+
+The scenario asked:
+
+- What happens next within the organization?
+- Who receives and investigates the issue?
+- Who clears the product for release?
+
+The example brought the presentation back to operational responsibility. Detecting and identifying a component is one step; deciding how the organization assesses it and authorizes release requires an agreed workflow.
+
+The captured notes end as Lucas opens the floor. They do not record a resolution to the case study.
+
+### Mapping to Working Group Workstreams
+
+#### Workstream 3: Adoption and Evaluation
+
+The presentation raised questions including:
+
+- Can teams identify who owns an AI-related component issue?
+- Do intake processes collect the information specialists need?
+- Which questions can existing OSPO workflows handle?
+- Where is additional expertise required?
+- How are contractual and infrastructure restrictions routed?
+- Who coordinates reviews involving several teams?
+- Who has authority to clear the product for release?
+
+### Action Items
+
+The captured notes do not establish assigned owners or deadlines. Proposed follow-ups include:
+
+- Share existing organizational workflows for handling AI-related component questions
+- Review the AI Program Office proposal and identify strengths, gaps, and alternative structures
 
 
 ## Summary October 27
