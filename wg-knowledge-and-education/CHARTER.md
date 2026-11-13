@@ -1,28 +1,27 @@
-# TODO Group Knowledge and Education Working Group
+# TODO Group Education and Enablement Working Group
 
 ## Purpose
 
-Help people responsible for open source programs find, use, and contribute practical guidance for their work. The group connects and improves existing TODO resources, identifies gaps, and coordinates contributions to keep knowledge useful and accessible without duplicating work across the community
-
-The OSPO book remains one resource within this scope: a starting point that introduces key concepts and directs readers to more detailed guidance
+Create learning and enablement materials useful to people _building_, _managing_, and _working in_ open source programs.
+Such materials might include modularized courses, textbooks, workbooks, and other practical resources that members of open source program offices can consult when they have questions about the professionalization of common open source practices.
+By collaborating to produce materials specifically structured for learners, we help users _implement_ the knowledge that members of the TODO Group have collected.
 
 ## Scope
 
 The working group will:
 
-- **Clarify how resources fit together.** Identify the audiences and purposes of the book, guides, and learning materials so readers can find what they need
-- **Review and improve existing content.** Identify outdated material, gaps, and opportunities to reuse or connect resources before creating new ones
-- **Coordinate with other working groups and maintainers.** Draw on their expertise and clarify responsibilities for contributions, review, and maintenance
-- **Support contributions and translations.** Help community members share practical experience through writing, reviewing, editing, and translating
-
-Changes to existing resources will be coordinated with their maintainers and respect licenses
+- **Maintain the OSPO Career Path materials.** We serve as principal maintainers of the [OSPO Career Path](https://github.com/todogroup/ospo-career-path) leaning modules, a set of vendor-neutral education materials intended to help open source professionals understand and implement best practices. This project is the center of our activity.
+- **Turn pre-existing community resources into learner-focused materials.** We continually review the books, guides, presentations, whitepapers, and other materials that TODO community members produce so we are able to translate those materials for learners, incorporating them into our coursework.
+- **Create resources specifically for learners.** We turn the work from our learning modules into a variety of resources aimed at professionals with different learning preferences, including interactive coursework and books.
+- **Catalyze knowledge production in the TODO community.** We help the TODO community identify gaps in the community's offerings. We then collaborate with our fellow community members to determine the best way to fill those gaps.
 
 ## Initial priorities
 
-1. **Map existing resources:** document their audiences, purpose, maintenance status and maintainers
-2. **Identify practical needs:** assess where guidance is missing, outdated, or overlapping
-3. **Clarify the book’s role:** recommend how it can remain useful within the wider collection, including its relationship to detailed guides and ongoing translations
-4. **Choose the first tasks and invite volunteers:** agree on what to update or create, who can contribute, and who can review the work.
+1. **Review and assess the OSPO Career Path/OSPO 101 training models.** We will review the existing learning modules to reacclimate to the scope and content.
+1. **Address outstanding issues and pull requests.** We'll return to community contributions and either incorporate or close them before proceding.
+1. **Identify high-priority materials in need of improvement.** As the learning modules have been in "maintanence mode" for several years, certain aspects have likely grown stale. We'll want to identify the areas most in need of updating.
+1. **Locate community materials to inform the work.** When we understand the scope of necessary changes, we will survey pre-existing community resources (such as the _OSPO Book_ and the _OSS in Business_ book) to determine which can be repurposed into education and enablement materials.
+1. **Release an updated version of the OSPO Career Path/OSPO 101 project.** The update version will contain updates versions of currently available modules and any new modules we've identified as priorities during our initial assessments.
 
 ## Participation and ways of working
 
@@ -38,7 +37,7 @@ The chairs facilitate meetings, coordinate agendas and follow-up actions, welcom
 
 Chairs support community discussion and shared decisions. Chairing the group does not automatically grant maintainer permissions in the repositories where deliverables are contributed.
 
-Current chairs and their contact details will be listed in the working group's directory in the [working-groups repository](https://github.com/todogroup/working-groups)
+Current chairs and their contact details will be listed in the working group's directory in the [working-groups repository](https://github.com/todogroup/working-groups).
 
 ### Chair transitions
 
@@ -50,7 +49,7 @@ If a chair becomes inactive, the other chairs or the TODO Group Steering Committ
 
 ## Licensing
 
-Content contributed to the [OSPOlogy repository](https://github.com/todogroup/ospology) will follow its [Creative Commons Attribution 4.0 International license](https://github.com/todogroup/ospology/blob/main/LICENSE), unless otherwise specified for a particular resource.
+Content contributed to the group's materials [will be openly licensed](https://github.com/todogroup/ospo-career-path#%E2%80%8D%EF%B8%8F-license). Unless otherwise notes, all code is offered under the Apache License 2.0, and documentation is offered under the Creative Commons Attribution 4.0 International License.
 
 Reused or adapted materials must retain appropriate attribution and comply with their original license terms.
 
@@ -58,4 +57,4 @@ Reused or adapted materials must retain appropriate attribution and comply with 
 
 All participants are expected to follow the [TODO Group Code of Conduct](https://todogroup.org/about/code-of-conduct/) in meetings, repository discussions, reviews, and other working group activities.
 
-The group encourages respectful discussion, constructive feedback, and participation from people with different backgrounds and levels of experience. Conduct concerns may be reported to conduct@todogroup.org
+The group encourages respectful discussion, constructive feedback, and participation from people with different backgrounds and levels of experience. Conduct concerns may be reported to `conduct@todogroup.org`.
