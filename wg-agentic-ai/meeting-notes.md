@@ -29,15 +29,12 @@ Stephen showed how the earlier prototype could inform a more generic application
 
 The discussion emphasized that a useful shared hub requires more than a working interface. Organizations need to define what they want to track, curate relevant information, connect existing systems, and choose an operating model they can support.
 
-### From an Internal Prototype to a Generic Hub
+### Context
 
-Stephen described a recurring OSPO challenge: information about projects, contributors, legal reviews, and engineering activity is distributed across teams and systems.
-
-The hub aims to bring those relationships into a common view. Building on the earlier demonstration, Stephen explored how to separate reusable capabilities from organization-specific information and methods.
-
-He described working with Diego to extract specifications from the internal application, allowing Diego to review and refine what could be shared before using those specifications to support an open source version.
-
-The work was presented as an early project under development. Contributing it to TODO Group was a proposed direction, rather than an established project status.
+- Stephen described a recurring OSPO challenge: information about projects, contributors, legal reviews, and engineering activity is distributed across teams and systems.
+- The hub aims to bring those relationships into a common view. Building on the earlier demonstration, Stephen explored how to separate reusable capabilities from organization-specific information and methods.
+- He described working with Diego to extract specifications from the internal application, allowing Diego to review and refine what could be shared before using those specifications to support an open source version.
+- The work was presented as an early project under development. Contributing it to TODO Group is the proposed direction.
 
 ### AI-Assisted Specification Extraction
 
@@ -55,36 +52,37 @@ The example included:
 - Implementation and validation tasks.
 - Issues recording differences or unexpected behavior.
 
-The Scorecard walkthrough illustrated the development method used to inform the hub work; it was not a demonstration of a completed Scorecard integration in the hub.
+The Scorecard walkthrough illustrated the development method used to inform the hub work; it was not a demonstration of a completed Scorecard integration in the hub
 
 ### Generic by Design
 
-The hub’s design separates shared capabilities from choices that belong to each adopting organization.
+The hub’s design separates shared capabilities from choices that belong to each adopting organization
 
 The presentation highlighted four principles:
 
-- **Configurable vocabulary:** role names, tiers, and influence labels can reflect the adopter’s terminology.
-- **Optional methods:** opinionated features, such as prioritization, can be disabled while the project inventory remains usable.
-- **Explicit visibility:** public-source and internal information are distinguished, with internal information excluded from public views.
-- **Dated affiliations:** a person’s previous role remains part of the history after they leave, without continuing to count as current organizational participation.
+- **Configurable vocabulary:** role names, tiers, and influence labels can reflect the adopter’s terminology
+- **Optional methods:** opinionated features, such as prioritization, can be disabled while the project inventory remains usable
+- **Explicit visibility:** public-source and internal information are distinguished, with internal information excluded from public views
+- **Dated affiliations:** a person’s previous role remains part of the history after they leave, without continuing to count as current organizational participation
 
-Stephen also described the hub as a layer over existing systems, with integrations supplying information rather than requiring users to recreate every process inside it.
+Stephen also described the hub as a layer over existing systems, with integrations supplying information rather than requiring users to recreate every process inside it
 
 ### Gates and Human Review Around AI-Assisted Changes
 
-The presentation showed how repository instructions and automated checks guide AI-assisted development.
+The presentation showed how repository instructions and automated checks guide AI-assisted development:
 
-An `AGENTS.md` file records expectations such as working from specifications, keeping internal data internal, using synthetic demonstration data, auditing access to internal information, and preserving an assisted-by trail.
-
-Automated checks included unit tests, browser tests across three engines, linting, and specification validation.
+1. An `AGENTS.md` file records expectations such as working from specifications, keeping internal data internal, using synthetic demonstration data, auditing access to internal information, and preserving an assisted-by trail.
+2. Automated checks included unit tests, browser tests across three engines, linting, and specification validation.
 
 Stephen’s slide also documented an important limitation: four AI-assisted changes passed the automated gates but still contained bugs found during code review. Examples included missing audit entries and a crash involving a duplicate name.
 
-The development pattern therefore retained human review and merging. Fixes began with a failing test that captured the problem.
+> The development pattern retained human review and merging. Fixes began with a failing test that captured the problem.
 
 ### Demonstration: Projects, People, and Portfolio Strategy
 
 Stephen demonstrated a local hub populated with synthetic data. The walkthrough included a dashboard, project records, people, organizations, licenses, contribution cases, collections, connectors, and an access log.
+
+<img width="1055" height="493" alt="Screenshot 2026-11-24 at 17 25 20" src="https://github.com/user-attachments/assets/82881772-ae7e-4a1c-a877-e6b0f5066d8e" />
 
 The portfolio view compared project tiers with levels of organizational involvement, ranging from use through contribution, maintenance, and leadership. It displayed current participation alongside a target and highlighted projects below that target.
 
