@@ -8,6 +8,7 @@ When adding notes for a new meeting:
    - [YYYY-MM-DD](#summary-month-day)
 
 # Table of Contents:
+- [2026-11-24](#summary-november-24)
 - [2026-11-10](#summary-november-10)
 - [2026-10-27](#summary-october-27)
 - [2026-09-29](#summary-september-29)
@@ -18,6 +19,160 @@ When adding notes for a new meeting:
 - [2026-06-30](#summary-june-30)
 - [2026-06-09](#summary-june-9)
 - [2026-05-26](#summary-may-26)
+
+
+## Summary November 24
+
+The TODO Group Agentic AI to Empower OSPOs working group welcomed Stephen Augustus for a follow-up demonstration of an **Open Source Program Hub**, building on the internal hub presented by Diego Mastroianni in September.
+
+Stephen showed how the earlier prototype could inform a more generic application that other OSPOs could adapt. The session connected AI-assisted specification and development with practical questions about portfolio strategy, internal information, integrations, and maintenance.
+
+The discussion emphasized that a useful shared hub requires more than a working interface. Organizations need to define what they want to track, curate relevant information, connect existing systems, and choose an operating model they can support.
+
+### From an Internal Prototype to a Generic Hub
+
+Stephen described a recurring OSPO challenge: information about projects, contributors, legal reviews, and engineering activity is distributed across teams and systems.
+
+The hub aims to bring those relationships into a common view. Building on the earlier demonstration, Stephen explored how to separate reusable capabilities from organization-specific information and methods.
+
+He described working with Diego to extract specifications from the internal application, allowing Diego to review and refine what could be shared before using those specifications to support an open source version.
+
+The work was presented as an early project under development. Contributing it to TODO Group was a proposed direction, rather than an established project status.
+
+### AI-Assisted Specification Extraction
+
+Stephen explained his use of specification-driven development: people review the proposed behavior and design before an agent proceeds through implementation tasks.
+
+To illustrate the method, he showed a separate example involving OpenSSF Scorecard and OpenSpec. This example demonstrated how an agent could document an existing project’s observable behavior as requirements and scenarios.
+
+The distinction between observed and intended behavior mattered. Stephen described asking the agent to document what the software actually does and separately identify discrepancies, rather than silently treating intended behavior as implemented behavior.
+
+The example included:
+
+- Specifications describing existing capabilities.
+- A proposal explaining a planned change and its impact.
+- Design documentation.
+- Implementation and validation tasks.
+- Issues recording differences or unexpected behavior.
+
+The Scorecard walkthrough illustrated the development method used to inform the hub work; it was not a demonstration of a completed Scorecard integration in the hub.
+
+### Generic by Design
+
+The hub’s design separates shared capabilities from choices that belong to each adopting organization.
+
+The presentation highlighted four principles:
+
+- **Configurable vocabulary:** role names, tiers, and influence labels can reflect the adopter’s terminology.
+- **Optional methods:** opinionated features, such as prioritization, can be disabled while the project inventory remains usable.
+- **Explicit visibility:** public-source and internal information are distinguished, with internal information excluded from public views.
+- **Dated affiliations:** a person’s previous role remains part of the history after they leave, without continuing to count as current organizational participation.
+
+Stephen also described the hub as a layer over existing systems, with integrations supplying information rather than requiring users to recreate every process inside it.
+
+### Gates and Human Review Around AI-Assisted Changes
+
+The presentation showed how repository instructions and automated checks guide AI-assisted development.
+
+An `AGENTS.md` file records expectations such as working from specifications, keeping internal data internal, using synthetic demonstration data, auditing access to internal information, and preserving an assisted-by trail.
+
+Automated checks included unit tests, browser tests across three engines, linting, and specification validation.
+
+Stephen’s slide also documented an important limitation: four AI-assisted changes passed the automated gates but still contained bugs found during code review. Examples included missing audit entries and a crash involving a duplicate name.
+
+The development pattern therefore retained human review and merging. Fixes began with a failing test that captured the problem.
+
+### Demonstration: Projects, People, and Portfolio Strategy
+
+Stephen demonstrated a local hub populated with synthetic data. The walkthrough included a dashboard, project records, people, organizations, licenses, contribution cases, collections, connectors, and an access log.
+
+The portfolio view compared project tiers with levels of organizational involvement, ranging from use through contribution, maintenance, and leadership. It displayed current participation alongside a target and highlighted projects below that target.
+
+Project records brought together information such as:
+
+- Recorded roles and contributors.
+- Licenses and contribution agreements.
+- Declared project status and computed activity signals.
+- Internal risk assessments.
+- Portfolio placement.
+- Relationship owners, notes, and follow-up dates.
+
+The demonstration distinguished human-entered information from computed signals. A declared project status and an observed repository signal could appear separately, preserving their different sources.
+
+### Strategy Alignment and Project Health
+
+A participant asked whether tiers and labels were entered by users or derived from repository analysis.
+
+Stephen described a flexible approach in which analysis could happen elsewhere and be supplied through a data feed. He discussed possible inputs such as Scorecard checks, repository activity signals, and CHAOSS metrics, depending on the organization’s needs.
+
+Diego revisited the earlier portfolio matrix to clarify its purpose. The matrix helps an organization communicate whether its participation matches its priorities. It does not, by itself, establish whether a project is healthy.
+
+Categories and targets therefore need to reflect the adopting OSPO’s strategy. The interface can make those choices visible, but it cannot make the strategic decisions on the organization’s behalf.
+
+### Connectors, Identity, and Privacy
+
+The demonstration included a GitHub connector interface, using synthetic data, with synchronization status and health information.
+
+The discussion explored how account information could connect contributors to internal identities. Stephen described mapping GitHub usernames to internal identifiers through an organizational directory, while noting that external affiliation information presents additional uncertainty and privacy considerations.
+
+The proposed design also recognizes bot accounts separately from human contributors.
+
+The presentation invited feedback on whether ticketing or identity and HR integration would be the most useful next connector. These were discussed as possible directions, rather than completed integrations.
+
+### How the Hub Relates to LFX Insights
+
+Diego clarified that the hub’s purpose is to support an organization’s own priorities and relationships, complementing broader ecosystem analytics.
+
+He described linking from the internal hub to LFX Insights when users need broader project and contributor information. The hub itself focuses on questions such as:
+
+- Which projects matter to the organization?
+- What has changed?
+- Is current involvement where the organization wants it to be?
+- What is the plan for closing a gap?
+- Which internal contributors should be visible and recognized?
+
+This distinction also affects the data model. An organization may need a curated view of its own people and selected projects without attempting to reproduce a comprehensive ecosystem-wide affiliation database.
+
+### Adoption Feedback: Lowering the Infrastructure Burden
+
+A participant highlighted constraints that can make deploying a database-backed service difficult, particularly where provisioning durable infrastructure requires substantial organizational work.
+
+The participant suggested exploring whether useful information could live in portable, repository-based formats, such as flat JSON files. This could make the approach easier to adopt without requiring every OSPO to operate another service.
+
+Stephen agreed that the tool needs to make practitioners’ work easier and remain manageable for its users.
+
+The discussion left the storage and deployment approach open. It surfaced portability, interoperability, and infrastructure burden as adoption criteria alongside application features.
+
+### Release Readiness and Collaborative Development
+
+Stephen explained that the project remained private while he considered release requirements, including authentication and authorization. The demonstrated identity switcher supported development and testing; it was not presented as a complete production access-control system.
+
+Participants expressed interest in trying the hub with their own information and contributing improvements. One participant proposed involving students in testing how the model fits a different organizational setting.
+
+Stephen discussed defining a useful initial release with Diego and improving documentation so people and agents could contribute more effectively.
+
+The discussion also stressed that deployment alone would not populate a useful hub. Adopters would still need to select projects, identify relevant people, map accounts, and curate information.
+
+Events were raised as another possible area. The value would come from identifying events relevant to the organization’s projects and community, alongside finding suitable sources and integrations.
+
+### Mapping to Working Group Workstreams
+
+#### Workstream 2: Skills, Prompts, and Workflow Library
+
+The main follow-up is to bring interested contributors into the repository-based design discussion: review the specifications, identify what is needed to open the project, and help define a path toward a possible transfer or donation to TODO Group, with open specifications maintained under neutral governance.
+
+Contributors can help refine the generic design, documentation, data formats, integration boundaries, and contribution process so the work can be shared and maintained across OSPOs. The specification-extraction workflow also offers a reusable way to turn internal OSPO tools into resources that others can inspect and adapt.
+
+At the time of the session, the repository remained private. Opening it, agreeing on maintainership and governance, and completing any transfer or donation were outstanding steps rather than finalized commitments.
+
+### Action Items
+
+The captured notes do not establish deadlines or a finalized release commitment. Discussed and proposed follow-ups include:
+
+- [Input] Invite interested contributors to join the repository-based design work once access is available and help identify the requirements for opening the project.
+- [Input] Define a useful initial release and improve documentation to support contributions.
+- [Input] Review the open specifications and refine the configurable design, connectors, visibility classes, and portable data approaches.
+- [Input] Work with the prospective maintainers and TODO Group to explore the requirements for a transfer or donation and maintenance of the open specifications under neutral governance.
 
 
 ## Summary November 10
