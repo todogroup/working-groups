@@ -56,6 +56,10 @@ The example included:
 
 The Scorecard walkthrough illustrated the development method used to inform the hub work; it was not a demonstration of a completed Scorecard integration in the hub.
 
+<img width="732" height="294" alt="Host it locally" src="https://github.com/user-attachments/assets/5151d2c1-0125-4a79-b42f-2dd1095cc125" />
+
+<img width="679" height="392" alt="Screenshot 2026-11-24 at 17 24 07" src="https://github.com/user-attachments/assets/47f57df7-e1e5-4530-b813-23313dce4816" />
+
 ### Generic by Design
 
 The hub’s design separates shared capabilities from choices that belong to each adopting organization.
@@ -155,6 +159,9 @@ The discussion also stressed that deployment alone would not populate a useful h
 Events were raised as another possible area. The value would come from identifying events relevant to the organization’s projects and community, alongside finding suitable sources and integrations.
 
 ### Mapping to Working Group Workstreams
+
+<img width="1066" height="421" alt="Questions for the group" src="https://github.com/user-attachments/assets/18c320ff-d1d2-4a70-a7e7-0346856e9700" />
+
 
 #### Workstream 2: Skills, Prompts, and Workflow Library
 
