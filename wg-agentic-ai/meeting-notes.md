@@ -166,12 +166,10 @@ At the time of the session, the repository remained private. Opening it, agreein
 
 ### Action Items
 
-The captured notes do not establish deadlines or a finalized release commitment. Discussed and proposed follow-ups include:
 
-- [Input] Invite interested contributors to join the repository-based design work once access is available and help identify the requirements for opening the project.
-- [Input] Define a useful initial release and improve documentation to support contributions.
-- [Input] Review the open specifications and refine the configurable design, connectors, visibility classes, and portable data approaches.
-- [Input] Work with the prospective maintainers and TODO Group to explore the requirements for a transfer or donation and maintenance of the open specifications under neutral governance.
+- [ ] Invite interested contributors to join the repository-based design work once access is available and help identify the requirements for opening the project
+- [ ] Define a useful initial release and improve documentation to support contributions. Review the open specifications and refine the design, connectors, visibility classes, and portable data approaches
+- [ ] Work with LF / TODO Group to explore the requirements for a transfer or donation and maintenance of the open specifications under neutral governance
 
 ## Summary November 10
 
